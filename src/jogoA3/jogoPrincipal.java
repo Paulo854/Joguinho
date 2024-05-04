@@ -1,5 +1,6 @@
 package jogoA3;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -12,6 +13,8 @@ import jogoA3.Fase1.BackgroundPanel;
 public class jogoPrincipal extends JFrame{
 	Fase1 f1 = new Fase1();
 	public JLabel lbl_iniciar;
+	public JLabel lbl_score;
+	public double score = 0;
 	 public class BackgroundPanel extends JPanel {
 	        private Image backgroundImage;
 
@@ -51,6 +54,15 @@ public class jogoPrincipal extends JFrame{
         }});
         lbl_iniciar.setBounds(525, 650, 256, 120);
         backgroundPanel.add(lbl_iniciar);
+        
+        lbl_score = new JLabel();
+        lbl_score.setText("Melhor pontuação: ");
+        Font fonteTamanho = new Font("Press Start 2P", Font.PLAIN, 25); 
+        lbl_score.setFont(fonteTamanho);
+        lbl_score.setBounds(10, 10, 250, 50);
+        backgroundPanel.add(lbl_score);
+        
+        
         
      // Adicionar o JPanel de fundo ao JFrame
         setContentPane(backgroundPanel);
