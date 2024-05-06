@@ -14,6 +14,7 @@ public class jogoPrincipal extends JFrame{
 	Fase1 f1 = new Fase1();
 	public JLabel lbl_iniciar;
 	public JLabel lbl_score;
+	public JLabel lbl_title;
 	public double score = 0;
 	 public class BackgroundPanel extends JPanel {
 	        private Image backgroundImage;
@@ -33,18 +34,20 @@ public class jogoPrincipal extends JFrame{
 	public jogoPrincipal() {
 		
 		
-		setTitle("Jogo fase 1");
+		setTitle("Menu inicial");
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
         
-        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("menu.jpeg"));
+        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("fundo.jpeg"));
         Image backgroundImage = backgroundImageIcon.getImage();
 
         // Criar o JPanel com a imagem de fundo
         BackgroundPanel backgroundPanel = new BackgroundPanel(backgroundImage);
         backgroundPanel.setLayout(null);
+        
+        lbl_title = new JLabel();
         
         lbl_iniciar = new JLabel();
         lbl_iniciar.setIcon(new ImageIcon(getClass().getResource("start.png")));
@@ -52,7 +55,7 @@ public class jogoPrincipal extends JFrame{
             f1.setVisible(true);
             dispose();
         }});
-        lbl_iniciar.setBounds(525, 650, 256, 120);
+        lbl_iniciar.setBounds(450, 500, 256, 120);
         backgroundPanel.add(lbl_iniciar);
         
         lbl_score = new JLabel();
@@ -61,7 +64,6 @@ public class jogoPrincipal extends JFrame{
         lbl_score.setFont(fonteTamanho);
         lbl_score.setBounds(10, 10, 250, 50);
         backgroundPanel.add(lbl_score);
-        
         
         
      // Adicionar o JPanel de fundo ao JFrame
