@@ -12,6 +12,7 @@ import jogoA3.Fase1.BackgroundPanel;
 
 public class jogoPrincipal extends JFrame{
 	Fase1 f1 = new Fase1();
+	
 	public JLabel lbl_iniciar;
 	public JLabel lbl_score;
 	public JLabel lbl_title;
@@ -71,9 +72,22 @@ public class jogoPrincipal extends JFrame{
 	}
 
 	public static void main(String[] args) {
-	
+		boolean repeticacao = true;
+		
+		
 		jogoPrincipal jogoPrincipal = new jogoPrincipal();
+		verificarCampo verifica = new verificarCampo();	
+		ArmazenaControle controlador = new ArmazenaControle();
+		do {
+		try {
 		jogoPrincipal.setVisible(true);
-	}
-
+		String nome = (JOptionPane.showInputDialog("Infome qual será seu Username"));
+		verifica.verificarCampo(nome);
+		controlador.setNome(nome);
+		repeticacao = false;
+		}catch(EmptyFieldException e) {
+			JOptionPane.showMessageDialog(null, "Erro: "+ e.getMessage());
+		}
+	}while(repeticacao);
+}
 }
