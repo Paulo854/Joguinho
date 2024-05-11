@@ -15,19 +15,24 @@ public class Fase1 extends JFrame implements ActionListener{
     public JLabel lbl_vidas_iconVilao;
     public JLabel lbl_vilao;
     public JLabel lbl_vilao2;
+    public JLabel lbl_vilao3;
     public JLabel lbl_contVidas;
     public JLabel lbl_heroi;
     public JLabel lbl_pontos;
     public JLabel lbl_ataqueMolho;
     public JLabel lbl_botaoAtaqueN;
     public JLabel lbl_botaoAtaqueN2;
+    public JLabel lbl_botaoAtaqueN3;
     public int pontos = 0;
+    public int pontos2 = 0;
     public double score = 0;
     public int ataques;
     public Timer timer;
+    
     JProgressBar barraHeroi = new JProgressBar();
     JProgressBar barraVilao = new JProgressBar();
     JProgressBar barraVilao2 = new JProgressBar();
+    JProgressBar barraVilao3 = new JProgressBar();
     
    
     public class BackgroundPanel extends JPanel {
@@ -108,6 +113,21 @@ public class Fase1 extends JFrame implements ActionListener{
         lbl_botaoAtaqueN2.setBounds(10, 290, 100,100);
         backgroundPanel.add(lbl_botaoAtaqueN2);
         
+        lbl_botaoAtaqueN3 = new JLabel();
+        lbl_botaoAtaqueN3.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+        lbl_botaoAtaqueN3.addMouseListener(new MouseAdapter() {
+            @Override 
+            public void mouseClicked(MouseEvent e) {
+            	barraVilao3.setValue(barraVilao3.getValue() - 50);
+                lbl_ataqueMolho.setVisible(true);
+                ++pontos;
+                timerAtaqueMolho.restart();
+            }
+        });
+        lbl_botaoAtaqueN3.setVisible(false);
+        lbl_botaoAtaqueN3.setBounds(10, 290, 100,100);
+        backgroundPanel.add(lbl_botaoAtaqueN3);
+        
         lbl_vidas = new JLabel();
         lbl_vidas.setIcon(new ImageIcon(getClass().getResource("vida.png")));
         lbl_vidas.setBounds(10, 52, 25, 25);
@@ -133,6 +153,14 @@ public class Fase1 extends JFrame implements ActionListener{
         barraVilao2.setVisible(false);
         barraVilao2.setForeground(Color.red);
         backgroundPanel.add(barraVilao2);
+        
+        barraVilao3.setBounds(1050, 50, 100, 30);
+        barraVilao3.setStringPainted(true);
+        barraVilao3.setMaximum(1500);
+        barraVilao3.setValue(1500);
+        barraVilao3.setVisible(false);
+        barraVilao3.setForeground(Color.red);
+        backgroundPanel.add(barraVilao3);
 
         lbl_vidas_iconVilao = new JLabel();
         lbl_vidas_iconVilao.setIcon(new ImageIcon(getClass().getResource("vida.png")));
@@ -150,6 +178,12 @@ public class Fase1 extends JFrame implements ActionListener{
 		lbl_vilao2.setVisible(false);
 		lbl_vilao2.setBounds(750, 260, 435, 554);
 		backgroundPanel.add(lbl_vilao2);
+        
+		lbl_vilao3 = new JLabel();
+		lbl_vilao3.setIcon(new ImageIcon(getClass().getResource("PericlesoPicles.png")));
+		lbl_vilao3.setVisible(false);
+		lbl_vilao3.setBounds(700, 260, 554, 554);
+		backgroundPanel.add(lbl_vilao3);
         
 
         lbl_heroi = new JLabel();
@@ -195,7 +229,9 @@ public class Fase1 extends JFrame implements ActionListener{
 		}
 		if(barraVilao.getValue()<=0) {
 			JOptionPane.showMessageDialog(null, "Parábens você conseguiu, seu score foi de: "+score);
-			Fase2 f2 = new Fase2();
+			Fase2 f2 = new Fase2(pontos);
+			ArmazenaControle controlador = new ArmazenaControle();
+			controlador.setScore1(score);
 			f2.setVisible(true);
 			dispose();
 			timer.stop();
