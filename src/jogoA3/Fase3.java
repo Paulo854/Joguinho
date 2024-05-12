@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class Fase3 extends Fase1 implements ActionListener{
 	ArmazenaControle controlador = new ArmazenaControle();
-	
+	verificabanco banco = new verificabanco();
 	public Fase3(int pontos) {
 		super.pontos = pontos;
 	}
@@ -32,6 +32,7 @@ public class Fase3 extends Fase1 implements ActionListener{
 		if(super.barraVilao3.getValue() <= 0 ) {
 			JOptionPane.showMessageDialog(null, "Ganhou, sua pontuação foi de "+score);
 			double somar = controlador.getScore1() + controlador.getScore2() + score;
+			banco.setBanco(controlador.getNome(), somar);
 			JOptionPane.showMessageDialog(null, "olá "+controlador.getNome()+" PauloPaulvamos ao resumo do seu game\n Batalha 1 Bacaxi = "+controlador.getScore1()+"\nBatalha 2 Ouv e Melo = "+controlador.getScore2()+"\n a soma do seus pontos resultou em: "+somar);
 			
 			super.timer.stop();
