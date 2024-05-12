@@ -1,9 +1,9 @@
 package jogoA3;
 
 public class ArmazenaControle{
-	private String nome;
-	private double score1;
-	private double score2;
+	private static String nome;
+	private static double score1;
+	private static double score2;
 	
 	public ArmazenaControle() {
 		

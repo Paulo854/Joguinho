@@ -25,10 +25,10 @@ public class Fase1 extends JFrame implements ActionListener{
     public JLabel lbl_botaoAtaqueN3;
     public int pontos = 0;
     public int pontos2 = 0;
-    public double score = 0;
     public int ataques;
     public Timer timer;
     
+    ArmazenaControle controlador = new ArmazenaControle();
     JProgressBar barraHeroi = new JProgressBar();
     JProgressBar barraVilao = new JProgressBar();
     JProgressBar barraVilao2 = new JProgressBar();
@@ -209,7 +209,7 @@ public class Fase1 extends JFrame implements ActionListener{
 		int ataquesValidos = rand.nextInt(36);
 		int ganharVida = rand.nextInt(45);
 		
-		score = pontos*0.26;
+		controlador.setScore1(pontos*0.26); 
 		
 		if(ataques == 1 || ataques == 2) {
 			if(ataquesValidos == 18) {
@@ -218,7 +218,7 @@ public class Fase1 extends JFrame implements ActionListener{
 		}
 		
 		if(barraHeroi.getValue()<=0) {
-			JOptionPane.showMessageDialog(null, "Nunca mas volte para o nosso reino, seu score foi de: "+score);
+			JOptionPane.showMessageDialog(null, "Nunca mas volte para o nosso reino, seu score foi de: "+controlador.getScore1());
 			dispose();
 			barraHeroi.setValue(100);
 			timer.stop();
@@ -228,10 +228,8 @@ public class Fase1 extends JFrame implements ActionListener{
 			barraHeroi.setValue(barraHeroi.getValue()+ganharVida);
 		}
 		if(barraVilao.getValue()<=0) {
-			JOptionPane.showMessageDialog(null, "Parábens você conseguiu, seu score foi de: "+score);
+			JOptionPane.showMessageDialog(null, "Parábens você conseguiu, seu score foi de: "+controlador.getScore1());
 			Fase2 f2 = new Fase2(pontos);
-			ArmazenaControle controlador = new ArmazenaControle();
-			controlador.setScore1(score);
 			f2.setVisible(true);
 			dispose();
 			timer.stop();

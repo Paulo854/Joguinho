@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 
 public class Fase2 extends Fase1 implements ActionListener{
 	ArmazenaControle controlador = new ArmazenaControle();
-
 	public  Fase2(int pontos) {
 		super.pontos = pontos;
 	}
@@ -20,7 +19,7 @@ public class Fase2 extends Fase1 implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			double score = pontos*0.50;
+			controlador.setScore2(pontos*0.50);
 			
 			super.lbl_botaoAtaqueN.setVisible(false);
 			super.lbl_botaoAtaqueN2.setVisible(true);
@@ -34,9 +33,8 @@ public class Fase2 extends Fase1 implements ActionListener{
 			
 			if(super.barraVilao2.getValue() <= 0 ) {
 				JOptionPane.showMessageDialog(null, "Ganhou");
-				JOptionPane.showMessageDialog(null, "sua pontuação foi de "+ score);
+				JOptionPane.showMessageDialog(null, "sua pontuação foi de "+controlador.getScore2());
 				Fase3 f3 = new Fase3(pontos);
-				controlador.setScore2(score);
 				f3.setVisible(true);
 				super.timer.stop();
 				dispose();

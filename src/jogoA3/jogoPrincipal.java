@@ -1,5 +1,6 @@
 package jogoA3;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -12,6 +13,7 @@ import jogoA3.Fase1.BackgroundPanel;
 
 public class jogoPrincipal extends JFrame{
 	Fase1 f1 = new Fase1();
+	verificabanco banco = new verificabanco();
 	
 	public JLabel lbl_iniciar;
 	public JLabel lbl_score;
@@ -60,11 +62,13 @@ public class jogoPrincipal extends JFrame{
         backgroundPanel.add(lbl_iniciar);
         
         lbl_score = new JLabel();
-        lbl_score.setText("Melhor pontuação: ");
+        lbl_score.setText("O " + banco.getNomeDoScore() + " teve a maior pontuação sendo ela: " + banco.getMelhorScore());
         Font fonteTamanho = new Font("Press Start 2P", Font.PLAIN, 25); 
         lbl_score.setFont(fonteTamanho);
-        lbl_score.setBounds(10, 10, 250, 50);
+        lbl_score.setForeground(Color.YELLOW); // Definindo a cor para amarelo
+        lbl_score.setBounds(10, 10, 9999, 50);
         backgroundPanel.add(lbl_score);
+
         
         
      // Adicionar o JPanel de fundo ao JFrame
@@ -81,6 +85,7 @@ public class jogoPrincipal extends JFrame{
 		do {
 		try {
 		jogoPrincipal.setVisible(true);
+		
 		String nome = (JOptionPane.showInputDialog("Infome qual será seu Username"));
 		verifica.verificarCampo(nome);
 		controlador.setNome(nome);
