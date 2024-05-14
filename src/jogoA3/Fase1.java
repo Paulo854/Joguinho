@@ -58,6 +58,12 @@ public class Fase1 extends JFrame implements ActionListener{
         setResizable(false);
         setLocationRelativeTo(null);
 
+	    
+        // Personagens
+        Protagonista p= new Protagonista(1000,1000,50);
+        Inimigo bacaxi = new Inimigo(1000,1000,50);
+
+
         // Carregar a imagem de fundo
         ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("cenario.jpg"));
         Image backgroundImage = backgroundImageIcon.getImage();
@@ -73,7 +79,7 @@ public class Fase1 extends JFrame implements ActionListener{
         barraHeroi.setForeground(Color.red);
         backgroundPanel.add(barraHeroi);
         
-        Timer timerAtaqueMolho = new Timer(1000, new ActionListener() {
+        /*Timer timerAtaqueMolho = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 lbl_ataqueMolho.setVisible(false);
@@ -126,7 +132,7 @@ public class Fase1 extends JFrame implements ActionListener{
         });
         lbl_botaoAtaqueN3.setVisible(false);
         lbl_botaoAtaqueN3.setBounds(10, 290, 100,100);
-        backgroundPanel.add(lbl_botaoAtaqueN3);
+        backgroundPanel.add(lbl_botaoAtaqueN3);*/
         
         lbl_vidas = new JLabel();
         lbl_vidas.setIcon(new ImageIcon(getClass().getResource("vida.png")));
@@ -193,7 +199,15 @@ public class Fase1 extends JFrame implements ActionListener{
 
         // Adicionar o JPanel de fundo ao JFrame
         setContentPane(backgroundPanel);
+
+	JButton btn_atacar= new JButton();
+        JButton btn_defender = new JButton();
         
+       gerarBotoes(p, bacaxi, barraHeroi, barraVilao, btn_atacar, btn_defender, pontos);
+	    
+     //gera os botões na tela
+       add(btn_atacar);
+       add(btn_defender);
         
         
         timer = new Timer(50,this);
@@ -205,17 +219,17 @@ public class Fase1 extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Random rand = new Random();
-		ataques = rand.nextInt(2);
-		int ataquesValidos = rand.nextInt(36);
+		/*ataques = rand.nextInt(2);
+		int ataquesValidos = rand.nextInt(36);*/
 		int ganharVida = rand.nextInt(45);
 		
 		controlador.setScore1(pontos*0.26); 
 		
-		if(ataques == 1 || ataques == 2) {
+		/*if(ataques == 1 || ataques == 2) {
 			if(ataquesValidos == 18) {
 			barraHeroi.setValue(barraHeroi.getValue()-5);
 			}
-		}
+		}*/
 		
 		if(barraHeroi.getValue()<=0) {
 			JOptionPane.showMessageDialog(null, "Nunca mas volte para o nosso reino, seu score foi de: "+controlador.getScore1());
@@ -233,9 +247,88 @@ public class Fase1 extends JFrame implements ActionListener{
 			f2.setVisible(true);
 			dispose();
 			timer.stop();
-			barraHeroi.setValue(100);
+			barraHeroi.setValue(1000);
 		}
 		
+		}
+	//TURNO PADRÃO
+
+public static void turno(Protagonista p, Inimigo i, int pontos){
+
+  
+  //Escolhe a ação do inimigo
+  i.defAcao();
+  
+  //Vez do jogador
+  if(i.getDefesa()==true){
+    i.setVida(i.getVida()-p.getDano()/2);
+  }
+  else {
+    i.setVida(i.getVida()-p.getDano());
+  }
+
+  //Vez do inimigo
+  if(p.getDefesa()==true){
+    p.setVida(p.getVida()-i.getDano()/2);
+  }
+  else {
+    p.setVida(p.getVida()-i.getDano());
+  }
+  
+  if(p.getDano()!=0) {
+	  pontos++;
+  }
+  
+}
+
+public static void gerarBotoes(Protagonista p, Inimigo i, JProgressBar heroi, JProgressBar vilao, JButton btn_atacar, JButton btn_defender, int pontos){
+
+
+//botao de atacar
+btn_atacar.setText("Atacar");
+btn_atacar.setBounds(400,200,100,50);
+btn_atacar.setFont(new Font("Serif", Font.PLAIN,20)); //fonte do texto
+btn_atacar.setForeground(new Color(255,255,255)); //cor letra
+btn_atacar.setBackground(new Color(255,29,29)); //cor fundo
+btn_atacar.setBorder(null);
+//acao do botao
+btn_atacar.addActionListener ( new ActionListener() {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		p.atacar();
+		System.out.println("Ataque"+p.getDano());
+		turno(p,i,pontos);
+		heroi.setValue(p.getVida());
+		vilao.setValue(i.getVida());
 		
-	}
+		System.out.println("Ataque do inimigo: "+i.getDano());
+		System.out.println("sua vida: "+p.getVida());
+		System.out.println("vida imimigo: "+i.getVida());
+	}});
+
+//botão de defender
+btn_defender.setText("Defender");
+btn_defender.setBounds(590,200,110,50);
+btn_defender.setFont(new Font("Serif", Font.PLAIN,20));
+btn_defender.setForeground(new Color(255,255,255));
+btn_defender.setBackground(new Color(137,233,19));
+btn_defender.addActionListener ( new ActionListener() {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		p.defender();
+		System.out.println("Ataque: "+p.getDano());
+		turno(p,i,pontos);
+		heroi.setValue(p.getVida());
+		vilao.setValue(i.getVida());
+		
+		System.out.println("Ataque do inimigo: "+i.getDano());
+		System.out.println("sua vida: "+p.getVida());
+		System.out.println("vida imimigo: "+i.getVida());
+	}});
+
+
+}
+}
 }
