@@ -29,7 +29,20 @@ public class Fase2 extends Fase1 implements ActionListener{
 			super.lbl_ataqueMolho.setBounds(750, 450, 360, 360);
 			super.barraVilao2.setVisible(true);;
 			super.setTitle("Batala 2 Ouv e Melo");
-		
+
+			// Personagens
+			Protagonista p= new Protagonista(1000,1000,50);
+	        Inimigo ouveMelo = new Inimigo(1000,1000,50);
+	        
+			JButton btn_atacar= new JButton();
+	        JButton btn_defender = new JButton();
+	        
+	       gerarBotoes(p, ouveMelo, barraHeroi, barraVilao2, btn_atacar, btn_defender, pontos);
+		    
+	     	//gera os botões na tela
+	     	  add(btn_atacar);
+	     	  add(btn_defender);
+
 			
 			if(super.barraVilao2.getValue() <= 0 ) {
 				JOptionPane.showMessageDialog(null, "Ganhou");
