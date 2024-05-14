@@ -27,7 +27,17 @@ public class Fase3 extends Fase1 implements ActionListener{
 		super.barraVilao2.setVisible(false);;
 		super.barraVilao.setVisible(false);
 		super.barraVilao3.setVisible(true);
-		super.setTitle("Batala 3 Ouv e Melo");
+		super.setTitle("Batala 3 Pericles, o Picles");
+
+		JButton btn_atacar= new JButton();
+		JButton btn_defender = new JButton();
+        
+		gerarBotoes(p, pericles, barraHeroi, barraVilao3, btn_atacar, btn_defender, pontos);
+	    
+		//gera os botões na tela
+		add(btn_atacar);
+		add(btn_defender);
+
 	
 		if(super.barraVilao3.getValue() <= 0 ) {
 			JOptionPane.showMessageDialog(null, "Ganhou, sua pontuação foi de "+score);
