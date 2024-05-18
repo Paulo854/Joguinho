@@ -1,13 +1,11 @@
 package jogoA3;
 
 import java.awt.*;
-import java.util.Random;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
-import java.util.TimerTask;
 import javax.swing.*;
 
 public class Fase1 extends JFrame implements ActionListener {
@@ -18,14 +16,13 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_vilao3;
     public JLabel lbl_contVidas;
     public JLabel lbl_heroi;
+    public JLabel lbl_heroiFase3;
     public JLabel lbl_pontos;
     public JLabel lbl_ataqueMolho;
     public JLabel lbl_botaoAtaqueN;
     public JLabel lbl_botaoAtaqueN2;
     public JLabel lbl_botaoAtaqueN3;
     public int pontos = 0;
-    public int pontos2 = 0;
-    public int ataques;
     public Timer timer;
 
     ArmazenaControle controlador = new ArmazenaControle();
@@ -33,7 +30,9 @@ public class Fase1 extends JFrame implements ActionListener {
     JProgressBar barraVilao = new JProgressBar();
     JProgressBar barraVilao2 = new JProgressBar();
     JProgressBar barraVilao3 = new JProgressBar();
+    private BackgroundPanel backgroundPanel;
 
+    // Classe BackgroundPanel
     public class BackgroundPanel extends JPanel {
         private Image backgroundImage;
 
@@ -44,7 +43,14 @@ public class Fase1 extends JFrame implements ActionListener {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            if (backgroundImage != null) {
+                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+        }
+
+        public void setBackgroundImage(Image backgroundImage) {
+            this.backgroundImage = backgroundImage;
+            repaint();
         }
     }
 
@@ -55,11 +61,10 @@ public class Fase1 extends JFrame implements ActionListener {
         setResizable(false);
         setLocationRelativeTo(null);
 
-
-        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("cenario.jpg"));
+        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("mesa.jpg"));
         Image backgroundImage = backgroundImageIcon.getImage();
 
-        BackgroundPanel backgroundPanel = new BackgroundPanel(backgroundImage);
+        backgroundPanel = new BackgroundPanel(backgroundImage);
         backgroundPanel.setLayout(null);
 
         barraHeroi.setBounds(40, 50, 100, 30);
@@ -81,33 +86,33 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_botaoAtaqueN.setIcon(new ImageIcon(getClass().getResource("botão.png")));
         lbl_botaoAtaqueN.addMouseListener(new MouseAdapter() {
             @Override
-
             public void mouseClicked(MouseEvent e) {
-            	int vida;
-            	int bacaxi;
-            	int normalAtaque = 7;
-            	int ataqueBacaxi = 5;
-            	Random r = new Random();
-            	vida = r.nextInt(10);
-            	bacaxi = r.nextInt(10);
-            	if(vida <= 4) {
-            		System.out.print("Você errou o ataque");
-            	}else if(vida >= 8) {
-            		System.out.print("Você acetou um ataque normal");
-            		barraVilao.setValue(barraVilao.getValue() - normalAtaque);
-            	}else {
-            		System.out.print("Você deu um superAtaque");
-            		barraVilao.setValue(barraVilao.getValue() - normalAtaque*2);
-            	}
-            	if(bacaxi <= 4) {
-            		System.out.print("O Bacaxi errou o ataque dele");
-            	}else if(bacaxi >= 8) {
-            		System.out.print("O bacaxi acertou um ataque em você de: "+ataqueBacaxi);
-            		barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi);
-            	}else {
-            		System.out.print("O bacaxi acertou um super ataque de: "+ataqueBacaxi*2);
-            		barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi*2);
-            	}
+                int vida;
+                int bacaxi;
+                int normalAtaque = 7;
+                int ataqueBacaxi = 5;
+                Random r = new Random();
+                vida = r.nextInt(10);
+                bacaxi = r.nextInt(10);
+                if (vida <= 4) {
+                    System.out.print("Você errou o ataque");
+                } else if (vida >= 8) {
+                    System.out.println("Você acetou um ataque normal");
+                    barraVilao.setValue(barraVilao.getValue() - normalAtaque);
+                } else {
+                    System.out.println("Você deu um superAtaque");
+                    barraVilao.setValue(barraVilao.getValue() - normalAtaque * 2);
+                }
+                if (bacaxi <= 4) {
+                    System.out.println("O Bacaxi errou o ataque dele");
+                } else if (bacaxi >= 8) {
+                    System.out.println("O bacaxi acertou um ataque em você de: " + ataqueBacaxi);
+                    barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi);
+                } else {
+                    System.out.println("O bacaxi acertou um super ataque de: " + ataqueBacaxi * 2);
+                    barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi * 2);
+                }
+            	
                 lbl_ataqueMolho.setVisible(true);
                 ++pontos;
                 timerAtaqueMolho.restart();
@@ -199,19 +204,29 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_vilao3 = new JLabel();
         lbl_vilao3.setIcon(new ImageIcon(getClass().getResource("PericlesoPicles.png")));
         lbl_vilao3.setVisible(false);
-        lbl_vilao3.setBounds(700, 260, 554, 554);
+        lbl_vilao3.setBounds(660, 200, 435, 554);
         backgroundPanel.add(lbl_vilao3);
 
         lbl_heroi = new JLabel();
         lbl_heroi.setIcon(new ImageIcon(getClass().getResource("Burguinho.png")));
         lbl_heroi.setBounds(1, 250, 554, 554);
         backgroundPanel.add(lbl_heroi);
+        
+        lbl_heroiFase3 = new JLabel();
+        lbl_heroiFase3.setIcon(new ImageIcon(getClass().getResource("Burguinho.png")));
+        lbl_heroiFase3.setVisible(false);
+        lbl_heroiFase3.setBounds(1, 200, 554, 554);
+        backgroundPanel.add(lbl_heroiFase3);
 
         setContentPane(backgroundPanel);
 
-
         timer = new Timer(50, this);
         timer.start();
+    }
+
+    // Novo método para trocar a imagem de fundo
+    public void setBackgroundImage(Image backgroundImage) {
+        backgroundPanel.setBackgroundImage(backgroundImage);
     }
 
     @Override
@@ -233,14 +248,12 @@ public class Fase1 extends JFrame implements ActionListener {
         }
         if (barraVilao.getValue() <= 0) {
             JOptionPane.showMessageDialog(null, "Parabéns você conseguiu, seu score foi de: " + controlador.getScore1());
-            Fase2 f2 = new Fase2(pontos);
+            int vidaHeroi = barraHeroi.getValue();
+            Fase2 f2 = new Fase2(pontos, vidaHeroi);
             f2.setVisible(true);
             dispose();
             timer.stop();
             barraHeroi.setValue(1000);
         }
     }
-
-    
- 
 }

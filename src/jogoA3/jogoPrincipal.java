@@ -34,7 +34,7 @@ public class jogoPrincipal extends JFrame{
 	        }
 	    }
 	
-	public jogoPrincipal() {
+	 public jogoPrincipal() {
 		
 		
 		setTitle("Menu inicial");
@@ -69,16 +69,12 @@ public class jogoPrincipal extends JFrame{
         lbl_score.setBounds(10, 10, 9999, 50);
         backgroundPanel.add(lbl_score);
 
-        
-        
-     // Adicionar o JPanel de fundo ao JFrame
+       
         setContentPane(backgroundPanel);
 	}
 
 	public static void main(String[] args) {
 		boolean repeticacao = true;
-		
-		
 		jogoPrincipal jogoPrincipal = new jogoPrincipal();
 		verificarCampo verifica = new verificarCampo();	
 		ArmazenaControle controlador = new ArmazenaControle();
