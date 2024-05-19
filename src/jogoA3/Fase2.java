@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 public class Fase2 extends Fase1 implements ActionListener{
 	ArmazenaControle controlador = new ArmazenaControle();
+	jogoPrincipal jogo = new jogoPrincipal();
 	public  Fase2(int pontos, int vida) {
 		super.pontos = pontos;
 		super.barraHeroi.setValue(vida);
@@ -26,7 +27,7 @@ public class Fase2 extends Fase1 implements ActionListener{
 			super.lbl_botaoAtaqueN2.setVisible(true);
 			super.lbl_vilao.setVisible(false);
 			super.lbl_vilao2.setVisible(true);
-			super.barraVilao3.setVisible(true);
+			super.barraVilao.setVisible(false);
 			super.lbl_ataqueMolho.setBounds(750, 450, 360, 360);
 			super.barraVilao2.setVisible(true);;
 			super.setTitle("Batala 2 Ouv e Melo");
@@ -34,12 +35,19 @@ public class Fase2 extends Fase1 implements ActionListener{
 
 			
 			if(super.barraVilao2.getValue() <= 0 ) {
-				JOptionPane.showMessageDialog(null, "Ganhou");
-				JOptionPane.showMessageDialog(null, "sua pontuação foi de "+controlador.getScore2());
+				JOptionPane.showMessageDialog(null, "Parabéns você conseguiu");
 				int vidaHeroi = super.barraHeroi.getValue();
 				Fase3 f3 = new Fase3(pontos, vidaHeroi);
 				f3.setVisible(true);
 				super.timer.stop();
+				dispose();
+			}
+			if(super.barraHeroi.getValue() <= 0) {
+				super.lbl_heroi.setIcon(new ImageIcon(getClass().getResource("morte.png")));
+	        	super.lbl_heroi.setBounds(1,320, 500, 500);
+				JOptionPane.showMessageDialog(null, "O burguinho falhou em sua missão, o reino da cozinha perdeu seu principe\n seu score foi de: "+controlador.getScore2());
+				super.timer.stop();
+				jogo.setVisible(true);
 				dispose();
 			}
 		}

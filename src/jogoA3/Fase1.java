@@ -32,7 +32,7 @@ public class Fase1 extends JFrame implements ActionListener {
     JProgressBar barraVilao3 = new JProgressBar();
     private BackgroundPanel backgroundPanel;
 
-    // Classe BackgroundPanel
+    
     public class BackgroundPanel extends JPanel {
         private Image backgroundImage;
 
@@ -114,8 +114,8 @@ public class Fase1 extends JFrame implements ActionListener {
                 }
             	
                 lbl_ataqueMolho.setVisible(true);
-                ++pontos;
                 timerAtaqueMolho.restart();
+                ++pontos;
             }
         });
         lbl_botaoAtaqueN.setBounds(10, 290, 100, 100);
@@ -126,10 +126,34 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_botaoAtaqueN2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                barraVilao2.setValue(barraVilao2.getValue() - 50);
+            	int vida;
+                int bacaxi;
+                int normalAtaque = 7;
+                int AtaqueveOuveMelo = 10;
+                Random r = new Random();
+                vida = r.nextInt(10);
+                bacaxi = r.nextInt(10);
+                if (vida <= 4) {
+                    System.out.print("Você errou o ataque");
+                } else if (vida >= 8) {
+                    System.out.println("Você acetou um ataque normal");
+                    barraVilao2.setValue(barraVilao2.getValue() - normalAtaque);
+                } else {
+                    System.out.println("Você deu um superAtaque");
+                    barraVilao2.setValue(barraVilao2.getValue() - normalAtaque * 2);
+                }
+                if (bacaxi <= 4) {
+                    System.out.println("O Ouv e o Melo errou o ataque deles");
+                } else if (bacaxi >= 8) {
+                    System.out.println("O Ouv e o Melo acertou um ataque em você de: " + AtaqueveOuveMelo);
+                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo);
+                } else {
+                    System.out.println("O Ouv e o Melo acertou um super ataque de: " + AtaqueveOuveMelo * 2);
+                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo * 2);
+                }
                 lbl_ataqueMolho.setVisible(true);
-                ++pontos;
                 timerAtaqueMolho.restart();
+                ++pontos;
             }
         });
         lbl_botaoAtaqueN2.setVisible(false);
@@ -224,7 +248,6 @@ public class Fase1 extends JFrame implements ActionListener {
         timer.start();
     }
 
-    // Novo método para trocar a imagem de fundo
     public void setBackgroundImage(Image backgroundImage) {
         backgroundPanel.setBackgroundImage(backgroundImage);
     }
@@ -232,28 +255,23 @@ public class Fase1 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Random rand = new Random();
-        int ganharVida = rand.nextInt(45);
 
         controlador.setScore1(pontos * 0.26);
 
         if (barraHeroi.getValue() <= 0) {
-            JOptionPane.showMessageDialog(null, "Nunca mais volte para o nosso reino, seu score foi de: " + controlador.getScore1());
-            dispose();
-            barraHeroi.setValue(100);
+        	lbl_heroi.setIcon(new ImageIcon(getClass().getResource("morte.png")));
+        	lbl_heroi.setBounds(1,250, 360, 360);
+            JOptionPane.showMessageDialog(null, "O burguinho falhou em sua missão, o reino da cozinha perdeu seu principe");
             timer.stop();
-        }
-        if (barraHeroi.getValue() <= 25) {
-            JOptionPane.showMessageDialog(null, "Vamos dizer que você tem sorte, vai ganhar " + ganharVida);
-            barraHeroi.setValue(barraHeroi.getValue() + ganharVida);
+            dispose();
         }
         if (barraVilao.getValue() <= 0) {
-            JOptionPane.showMessageDialog(null, "Parabéns você conseguiu, seu score foi de: " + controlador.getScore1());
+            JOptionPane.showMessageDialog(null, "Parabéns você conseguiu");
             int vidaHeroi = barraHeroi.getValue();
             Fase2 f2 = new Fase2(pontos, vidaHeroi);
             f2.setVisible(true);
-            dispose();
             timer.stop();
-            barraHeroi.setValue(1000);
+            dispose();
         }
     }
 }
