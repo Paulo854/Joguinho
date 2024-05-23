@@ -12,9 +12,8 @@ import javax.swing.*;
 import jogoA3.Fase1.BackgroundPanel;
 
 public class jogoPrincipal extends JFrame{
-	Fase1 f1 = new Fase1();
+	cena1 c1 = new cena1();
 	verificabanco banco = new verificabanco();
-	
 	public JLabel lbl_iniciar;
 	public JLabel lbl_score;
 	public JLabel lbl_title;
@@ -55,7 +54,7 @@ public class jogoPrincipal extends JFrame{
         lbl_iniciar = new JLabel();
         lbl_iniciar.setIcon(new ImageIcon(getClass().getResource("start.png")));
         lbl_iniciar.addMouseListener(new MouseAdapter(){@Override public void mouseClicked(MouseEvent e){
-            f1.setVisible(true);
+            c1.setVisible(true);
             dispose();
         }});
         lbl_iniciar.setBounds(450, 500, 256, 120);

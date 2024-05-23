@@ -24,6 +24,8 @@ public class Fase2 extends Fase1 implements ActionListener{
 			controlador.setScore2(pontos*0.50);
 			
 			super.lbl_botaoAtaqueN.setVisible(false);
+			super.lbl_defesabacaxi.setVisible(false);
+			super.lbl_defesaOuvEMelo.setVisible(true);
 			super.lbl_botaoAtaqueN2.setVisible(true);
 			super.lbl_vilao.setVisible(false);
 			super.lbl_vilao2.setVisible(true);

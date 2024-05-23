@@ -24,6 +24,9 @@ public class Fase3 extends Fase1 implements ActionListener {
         super.lbl_botaoAtaqueN.setVisible(false);
         super.lbl_botaoAtaqueN2.setVisible(false);
         super.lbl_botaoAtaqueN3.setVisible(true);
+        super.lbl_defesabacaxi.setVisible(false);
+		super.lbl_defesaOuvEMelo.setVisible(false);
+		super.lbl_defesaPericles.setVisible(true);
         super.lbl_heroi.setVisible(false);
         super.lbl_heroiFase3.setVisible(true);
         super.lbl_vilao.setVisible(false);

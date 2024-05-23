@@ -19,6 +19,9 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_heroiFase3;
     public JLabel lbl_pontos;
     public JLabel lbl_ataqueMolho;
+    public JLabel lbl_defesabacaxi;
+    public JLabel lbl_defesaOuvEMelo;
+    public JLabel lbl_defesaPericles;
     public JLabel lbl_botaoAtaqueN;
     public JLabel lbl_botaoAtaqueN2;
     public JLabel lbl_botaoAtaqueN3;
@@ -82,6 +85,65 @@ public class Fase1 extends JFrame implements ActionListener {
         });
         timerAtaqueMolho.setRepeats(false);
 
+        lbl_defesabacaxi = new JLabel();
+        lbl_defesabacaxi.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+        lbl_defesabacaxi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Random d = new Random();
+                int defesa;
+                defesa = d.nextInt(10);
+                if(defesa <= 5) {
+                	System.out.println("Você conseguiu defender o ataque do Bacaxi");
+                }else {
+                	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
+                	barraHeroi.setValue(barraHeroi.getValue() - 3);
+                }
+            }
+        });
+        lbl_defesabacaxi.setBounds(150, 290, 100, 100);
+        backgroundPanel.add(lbl_defesabacaxi); 
+
+        lbl_defesaOuvEMelo = new JLabel();
+        lbl_defesaOuvEMelo.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+        lbl_defesaOuvEMelo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Random d = new Random();
+                int defesa;
+                defesa = d.nextInt(10);
+                if(defesa <= 5) {
+                	System.out.println("Você conseguiu defender o ataque do Ouv e do Melo");
+                }else {
+                	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
+                	barraHeroi.setValue(barraHeroi.getValue() - 5);
+                }
+            }
+        });
+        lbl_defesaOuvEMelo.setBounds(150, 290, 100, 100);
+        lbl_defesaOuvEMelo.setVisible(false);
+        backgroundPanel.add(lbl_defesaOuvEMelo); 
+        
+        lbl_defesaPericles = new JLabel();
+        lbl_defesaPericles.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+        lbl_defesaPericles.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Random d = new Random();
+                int defesa;
+                defesa = d.nextInt(10);
+                if(defesa <= 5) {
+                	System.out.println("Você conseguiu defender o ataque do Pericles");
+                }else {
+                	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
+                	barraHeroi.setValue(barraHeroi.getValue() - 3);
+                }
+            }
+        });
+        lbl_defesaPericles.setBounds(150, 290, 100, 100);
+        lbl_defesaPericles.setVisible(false);
+        backgroundPanel.add(lbl_defesaPericles); 
+        
         lbl_botaoAtaqueN = new JLabel();
         lbl_botaoAtaqueN.setIcon(new ImageIcon(getClass().getResource("botão.png")));
         lbl_botaoAtaqueN.addMouseListener(new MouseAdapter() {
@@ -120,7 +182,8 @@ public class Fase1 extends JFrame implements ActionListener {
         });
         lbl_botaoAtaqueN.setBounds(10, 290, 100, 100);
         backgroundPanel.add(lbl_botaoAtaqueN);
-
+        
+        
         lbl_botaoAtaqueN2 = new JLabel();
         lbl_botaoAtaqueN2.setIcon(new ImageIcon(getClass().getResource("botão.png")));
         lbl_botaoAtaqueN2.addMouseListener(new MouseAdapter() {
