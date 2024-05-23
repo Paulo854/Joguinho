@@ -36,13 +36,13 @@ public class Fase3 extends Fase1 implements ActionListener {
         super.barraVilao2.setVisible(false);
         super.barraVilao.setVisible(false);
         super.barraVilao3.setVisible(true);
-        super.setTitle("Batalha 3 Pericles, o Picles");
+        super.setTitle("Batalha 3 P. R. Icles");
 
         if (super.barraVilao3.getValue() <= 0) {
             JOptionPane.showMessageDialog(null, "O principe cumpriu sua missão, P. R. Icles foi derrotado, burguinho retorna ao reino triunfante");
             double somar = controlador.getScore1() + controlador.getScore2() + score;
             banco.setBanco(controlador.getNome(), somar);
-            JOptionPane.showMessageDialog(null, "Olá " + controlador.getNome() + " vamos resumo do seu game\nBatalha 1 Bacaxi = " + controlador.getScore1() + "\nBatalha 2 Ouv e Melo = " + controlador.getScore2() + "\nBatalha com o P. R. Icles = "+score+"\nA soma do seus pontos resultou em: " + somar);
+            JOptionPane.showMessageDialog(null, "Olá " + controlador.getNome() + " vamos resumo do seu game\nBatalha 1 Caxi = " + controlador.getScore1() + "\nBatalha 2 Cole e Melo = " + controlador.getScore2() + "\nBatalha com o P. R. Icles = "+score+"\nA soma do seus pontos resultou em: " + somar);
             super.timer.stop();
             dispose();
         }

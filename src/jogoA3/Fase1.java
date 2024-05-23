@@ -27,6 +27,9 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_botaoAtaqueN3;
     public int pontos = 0;
     public Timer timer;
+    public int vidaBacaxi = 800;
+    public int vidaOuvEmelo = 1200;
+    public int vidaPericles = 1800;
 
     ArmazenaControle controlador = new ArmazenaControle();
     JProgressBar barraHeroi = new JProgressBar();
@@ -58,7 +61,7 @@ public class Fase1 extends JFrame implements ActionListener {
     }
 
     public Fase1() {
-        setTitle("Batalha 1 Bacaxi");
+        setTitle("Batalha 1 Caxi");
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,8 +102,9 @@ public class Fase1 extends JFrame implements ActionListener {
                 	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
                 	barraHeroi.setValue(barraHeroi.getValue() - 3);
                 }
+                ++pontos;
             }
-        });
+         });
         lbl_defesabacaxi.setBounds(150, 290, 100, 100);
         backgroundPanel.add(lbl_defesabacaxi); 
 
@@ -138,6 +142,7 @@ public class Fase1 extends JFrame implements ActionListener {
                 	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
                 	barraHeroi.setValue(barraHeroi.getValue() - 3);
                 }
+                ++pontos;
             }
         });
         lbl_defesaPericles.setBounds(150, 290, 100, 100);
@@ -154,24 +159,26 @@ public class Fase1 extends JFrame implements ActionListener {
                 int normalAtaque = 7;
                 int ataqueBacaxi = 5;
                 Random r = new Random();
-                vida = r.nextInt(10);
-                bacaxi = r.nextInt(10);
-                if (vida <= 4) {
+                vida = r.nextInt(100);
+                bacaxi = r.nextInt(100);
+                if (vida <= 20) {
                     System.out.print("Você errou o ataque");
-                } else if (vida >= 8) {
-                    System.out.println("Você acetou um ataque normal");
-                    barraVilao.setValue(barraVilao.getValue() - normalAtaque);
-                } else {
+                } else if (vida <= 60) {
+                    System.out.println("Você acertou um ataque normal");
+                    barraVilao.setValue(barraVilao.getValue() - normalAtaque);   
+                }else if(bacaxi <= 80){
+                	System.out.println("Bacaxi conseguiu defender seu ataque");
+                }else {
                     System.out.println("Você deu um superAtaque");
                     barraVilao.setValue(barraVilao.getValue() - normalAtaque * 2);
                 }
-                if (bacaxi <= 4) {
-                    System.out.println("O Bacaxi errou o ataque dele");
-                } else if (bacaxi >= 8) {
-                    System.out.println("O bacaxi acertou um ataque em você de: " + ataqueBacaxi);
+                if (bacaxi <= 10) {
+                    System.out.println("O Caxi errou o ataque dele");
+                } else if (bacaxi <= 70) {
+                    System.out.println("O Caxi acertou um ataque em você de: " + ataqueBacaxi);
                     barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi);
                 } else {
-                    System.out.println("O bacaxi acertou um super ataque de: " + ataqueBacaxi * 2);
+                    System.out.println("O Caxi acertou um super ataque de: " + ataqueBacaxi * 2);
                     barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi * 2);
                 }
             	
@@ -191,27 +198,29 @@ public class Fase1 extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
             	int vida;
                 int bacaxi;
-                int normalAtaque = 7;
+                int normalAtaque = 12;
                 int AtaqueveOuveMelo = 10;
                 Random r = new Random();
-                vida = r.nextInt(10);
-                bacaxi = r.nextInt(10);
-                if (vida <= 4) {
+                vida = r.nextInt(100);
+                bacaxi = r.nextInt(100);
+                if (vida <= 20) {
                     System.out.print("Você errou o ataque");
-                } else if (vida >= 8) {
+                } else if (vida <= 60) {
                     System.out.println("Você acetou um ataque normal");
                     barraVilao2.setValue(barraVilao2.getValue() - normalAtaque);
-                } else {
+                }else if(bacaxi <= 80) {
+                	System.out.print("Cole e o Melo defendeu seu ataque");
+                }else {
                     System.out.println("Você deu um superAtaque");
                     barraVilao2.setValue(barraVilao2.getValue() - normalAtaque * 2);
                 }
                 if (bacaxi <= 4) {
-                    System.out.println("O Ouv e o Melo errou o ataque deles");
+                    System.out.println("O Cole e o Melo errou o ataque deles");
                 } else if (bacaxi >= 8) {
-                    System.out.println("O Ouv e o Melo acertou um ataque em você de: " + AtaqueveOuveMelo);
+                    System.out.println("O Cole e o Melo acertou um ataque em você de: " + AtaqueveOuveMelo);
                     barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo);
                 } else {
-                    System.out.println("O Ouv e o Melo acertou um super ataque de: " + AtaqueveOuveMelo * 2);
+                    System.out.println("O Cole e o Melo acertou um super ataque de: " + AtaqueveOuveMelo * 2);
                     barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo * 2);
                 }
                 lbl_ataqueMolho.setVisible(true);
@@ -228,10 +237,33 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_botaoAtaqueN3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                barraVilao3.setValue(barraVilao3.getValue() - 50);
+            	int vida;
+                int pericles;
+                int normalAtaque = 15;
+                int AtaquePericles = 50;
+                Random r = new Random();
+                vida = r.nextInt(100);
+                pericles = r.nextInt(100);
+                if (vida <= 10) {
+                    System.out.print("Você errou o ataque");
+                } else if (vida <= 70) {
+                    System.out.println("Você acetou um ataque normal");
+                    barraVilao3.setValue(barraVilao3.getValue() - normalAtaque);
+                }else if(pericles == 60 || pericles == 70){
+                	System.out.print("Pericles denfedeu seu ataque");
+                }else {
+                	System.out.println("Você acertou um super ataque");
+                	barraVilao3.setValue(barraVilao3.getValue() - normalAtaque * 2);
+                }
+                if (pericles <= 2) {
+                    System.out.println("O Pericles errou o ataque deles");
+                } else if (pericles <= 5) {
+                    System.out.println("O Cole e o Melo acertou um ataque em você de: " + AtaquePericles);
+                    barraHeroi.setValue(barraHeroi.getValue() - AtaquePericles);
+                }
                 lbl_ataqueMolho.setVisible(true);
-                ++pontos;
                 timerAtaqueMolho.restart();
+                ++pontos;
             }
         });
         lbl_botaoAtaqueN3.setVisible(false);
@@ -251,23 +283,23 @@ public class Fase1 extends JFrame implements ActionListener {
 
         barraVilao.setBounds(1050, 50, 100, 30);
         barraVilao.setStringPainted(true);
-        barraVilao.setMaximum(400);
-        barraVilao.setValue(400);
+        barraVilao.setMaximum(vidaBacaxi);
+        barraVilao.setValue(vidaBacaxi);
         barraVilao.setForeground(Color.red);
         backgroundPanel.add(barraVilao);
 
         barraVilao2.setBounds(1050, 50, 100, 30);
         barraVilao2.setStringPainted(true);
-        barraVilao2.setMaximum(800);
-        barraVilao2.setValue(800);
+        barraVilao2.setMaximum(vidaOuvEmelo);
+        barraVilao2.setValue(vidaOuvEmelo);
         barraVilao2.setVisible(false);
         barraVilao2.setForeground(Color.red);
         backgroundPanel.add(barraVilao2);
 
         barraVilao3.setBounds(1050, 50, 100, 30);
         barraVilao3.setStringPainted(true);
-        barraVilao3.setMaximum(1500);
-        barraVilao3.setValue(1500);
+        barraVilao3.setMaximum(vidaPericles);
+        barraVilao3.setValue(vidaPericles);
         barraVilao3.setVisible(false);
         barraVilao3.setForeground(Color.red);
         backgroundPanel.add(barraVilao3);
@@ -279,7 +311,7 @@ public class Fase1 extends JFrame implements ActionListener {
 
         lbl_vilao = new JLabel();
         lbl_vilao.setIcon(new ImageIcon(getClass().getResource("Bacaxi.png")));
-        lbl_vilao.setBounds(750, 260, 435, 554);
+        lbl_vilao.setBounds(750, 220, 435, 554);
         backgroundPanel.add(lbl_vilao);
 
         lbl_vilao2 = new JLabel();
@@ -287,6 +319,8 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_vilao2.setVisible(false);
         lbl_vilao2.setBounds(750, 260, 435, 554);
         backgroundPanel.add(lbl_vilao2);
+        
+        
 
         lbl_vilao3 = new JLabel();
         lbl_vilao3.setIcon(new ImageIcon(getClass().getResource("PericlesoPicles.png")));
@@ -321,6 +355,7 @@ public class Fase1 extends JFrame implements ActionListener {
 
         controlador.setScore1(pontos * 0.26);
 
+        
         if (barraHeroi.getValue() <= 0) {
         	lbl_heroi.setIcon(new ImageIcon(getClass().getResource("morte.png")));
         	lbl_heroi.setBounds(1,250, 360, 360);

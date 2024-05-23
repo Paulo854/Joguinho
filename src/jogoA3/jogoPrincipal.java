@@ -18,6 +18,8 @@ public class jogoPrincipal extends JFrame{
 	public JLabel lbl_score;
 	public JLabel lbl_title;
 	public double score = 0;
+	
+	
 	 public class BackgroundPanel extends JPanel {
 	        private Image backgroundImage;
 
@@ -42,7 +44,7 @@ public class jogoPrincipal extends JFrame{
         setResizable(false);
         setLocationRelativeTo(null);
         
-        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("fundo.jpeg"));
+        ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("fundo.png"));
         Image backgroundImage = backgroundImageIcon.getImage();
 
         // Criar o JPanel com a imagem de fundo
@@ -54,7 +56,9 @@ public class jogoPrincipal extends JFrame{
         lbl_iniciar = new JLabel();
         lbl_iniciar.setIcon(new ImageIcon(getClass().getResource("start.png")));
         lbl_iniciar.addMouseListener(new MouseAdapter(){@Override public void mouseClicked(MouseEvent e){
-            c1.setVisible(true);
+            //c1.setVisible(true);
+        	Fase1 f1 = new Fase1();
+        	f1.setVisible(true);
             dispose();
         }});
         lbl_iniciar.setBounds(450, 500, 256, 120);
@@ -64,7 +68,7 @@ public class jogoPrincipal extends JFrame{
         lbl_score.setText("O " + banco.getNomeDoScore() + " teve a maior pontuação sendo ela: " + banco.getMelhorScore());
         Font fonteTamanho = new Font("Press Start 2P", Font.PLAIN, 25); 
         lbl_score.setFont(fonteTamanho);
-        lbl_score.setForeground(Color.YELLOW); // Definindo a cor para amarelo
+        lbl_score.setForeground(Color.YELLOW); 
         lbl_score.setBounds(10, 10, 9999, 50);
         backgroundPanel.add(lbl_score);
 

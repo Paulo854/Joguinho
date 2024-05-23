@@ -32,7 +32,7 @@ public class Fase2 extends Fase1 implements ActionListener{
 			super.barraVilao.setVisible(false);
 			super.lbl_ataqueMolho.setBounds(750, 450, 360, 360);
 			super.barraVilao2.setVisible(true);;
-			super.setTitle("Batala 2 Ouv e Melo");
+			super.setTitle("Batala 2 Cole e Melo");
 
 
 			

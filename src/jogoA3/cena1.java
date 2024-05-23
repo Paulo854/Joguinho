@@ -52,6 +52,7 @@ public class cena1 extends JFrame {
         super.setVisible(b);
         if (b) { // Se a janela está sendo exibida
             // Carrega e inicia a música
+        	System.out.print("sistema iniciado");
             playBackgroundMusic("testemusica.wav");
         }
     }
