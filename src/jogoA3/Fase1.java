@@ -80,6 +80,15 @@ public class Fase1 extends JFrame implements ActionListener {
         barraHeroi.setForeground(Color.red);
         backgroundPanel.add(barraHeroi);
 
+
+        /*String logTexto= null;
+        JLabel lbl_log = new JLabel();
+        lbl_log.setBounds(350,600,500,70);
+        lbl_log.setText(logTexto);
+        lbl_log.setForeground(Color.white);
+        lbl_log.setBackground(Color.black);*/
+
+        
         Timer timerAtaqueMolho = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -97,9 +106,9 @@ public class Fase1 extends JFrame implements ActionListener {
                 int defesa;
                 defesa = d.nextInt(10);
                 if(defesa <= 5) {
-                	System.out.println("Você conseguiu defender o ataque do Bacaxi");
+                	//logTexto="Defendeu!";
                 }else {
-                	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
+                	//logTexto="Ah não! Sua defesa não foi forte o suficiente!";
                 	barraHeroi.setValue(barraHeroi.getValue() - 3);
                 }
                 ++pontos;
@@ -117,9 +126,9 @@ public class Fase1 extends JFrame implements ActionListener {
                 int defesa;
                 defesa = d.nextInt(10);
                 if(defesa <= 5) {
-                	System.out.println("Você conseguiu defender o ataque do Ouv e do Melo");
+                	//logTexto="Defendeu!";
                 }else {
-                	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
+                	//logTexto="Ah não! Sua defesa não foi forte o suficiente!";
                 	barraHeroi.setValue(barraHeroi.getValue() - 5);
                 }
             }
@@ -137,9 +146,9 @@ public class Fase1 extends JFrame implements ActionListener {
                 int defesa;
                 defesa = d.nextInt(10);
                 if(defesa <= 5) {
-                	System.out.println("Você conseguiu defender o ataque do Pericles");
+                    //logTexto="Defendeu!";
                 }else {
-                	System.out.println("Você não defendeu 100% o ataque porém o ataque foi reduzido em 50%");
+                	//logTexto="Ah não! Sua defesa não foi forte o suficiente!";
                 	barraHeroi.setValue(barraHeroi.getValue() - 3);
                 }
                 ++pontos;
@@ -162,23 +171,23 @@ public class Fase1 extends JFrame implements ActionListener {
                 vida = r.nextInt(100);
                 bacaxi = r.nextInt(100);
                 if (vida <= 20) {
-                    System.out.print("Você errou o ataque");
+                    //logTexto="Errou...";
                 } else if (vida <= 60) {
-                    System.out.println("Você acertou um ataque normal");
+                    //logTexto="Inimigo atingido!";
                     barraVilao.setValue(barraVilao.getValue() - normalAtaque);   
                 }else if(bacaxi <= 80){
-                	System.out.println("Bacaxi conseguiu defender seu ataque");
+                	//logTexto="Caramba! O inimigo defendeu!";
                 }else {
-                    System.out.println("Você deu um superAtaque");
+                    //logTexto="O ataque acertou um ponto fraco!";
                     barraVilao.setValue(barraVilao.getValue() - normalAtaque * 2);
                 }
                 if (bacaxi <= 10) {
-                    System.out.println("O Caxi errou o ataque dele");
+                    //logTexto="... que bom que ele errou";
                 } else if (bacaxi <= 70) {
-                    System.out.println("O Caxi acertou um ataque em você de: " + ataqueBacaxi);
+                    //logTexto="Você foi atingido!";
                     barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi);
                 } else {
-                    System.out.println("O Caxi acertou um super ataque de: " + ataqueBacaxi * 2);
+                    //logTexto="Ai! Esse ataque foi muito forte...";
                     barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi * 2);
                 }
             	
@@ -204,23 +213,24 @@ public class Fase1 extends JFrame implements ActionListener {
                 vida = r.nextInt(100);
                 bacaxi = r.nextInt(100);
                 if (vida <= 20) {
-                    System.out.print("Você errou o ataque");
+                    //logTexto="Errou...";
                 } else if (vida <= 60) {
-                    System.out.println("Você acetou um ataque normal");
+                    //logTexto="Inimigo atingido!";
                     barraVilao2.setValue(barraVilao2.getValue() - normalAtaque);
                 }else if(bacaxi <= 80) {
-                	System.out.print("Cole e o Melo defendeu seu ataque");
+                	//logTexto="Caramba! O inimigo defendeu!";
                 }else {
-                    System.out.println("Você deu um superAtaque");
+                    //logTexto="O ataque acertou um ponto fraco!";
                     barraVilao2.setValue(barraVilao2.getValue() - normalAtaque * 2);
                 }
                 if (bacaxi <= 4) {
-                    System.out.println("O Cole e o Melo errou o ataque deles");
+                    //logTexto="... que bom que ele errou";
+                    
                 } else if (bacaxi >= 8) {
-                    System.out.println("O Cole e o Melo acertou um ataque em você de: " + AtaqueveOuveMelo);
+                    //logTexto="Você foi atingido!";
                     barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo);
                 } else {
-                    System.out.println("O Cole e o Melo acertou um super ataque de: " + AtaqueveOuveMelo * 2);
+                    //logTexto="Ai! Esse ataque foi muito forte...";
                     barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo * 2);
                 }
                 lbl_ataqueMolho.setVisible(true);
@@ -245,20 +255,20 @@ public class Fase1 extends JFrame implements ActionListener {
                 vida = r.nextInt(100);
                 pericles = r.nextInt(100);
                 if (vida <= 10) {
-                    System.out.print("Você errou o ataque");
+                    //logTexto="Errou...";
                 } else if (vida <= 70) {
-                    System.out.println("Você acetou um ataque normal");
+                    //logTexto="Inimigo atingido!";
                     barraVilao3.setValue(barraVilao3.getValue() - normalAtaque);
                 }else if(pericles == 60 || pericles == 70){
-                	System.out.print("Pericles denfedeu seu ataque");
+                	//logTexto="Caramba! O inimigo defendeu!";
                 }else {
-                	System.out.println("Você acertou um super ataque");
+                    //logTexto="O ataque acertou um ponto fraco!";
                 	barraVilao3.setValue(barraVilao3.getValue() - normalAtaque * 2);
                 }
                 if (pericles <= 2) {
-                    System.out.println("O Pericles errou o ataque deles");
+                    //logTexto="... que bom que ele errou";
                 } else if (pericles <= 5) {
-                    System.out.println("O Cole e o Melo acertou um ataque em você de: " + AtaquePericles);
+                    //logTexto="Você foi atingido!";
                     barraHeroi.setValue(barraHeroi.getValue() - AtaquePericles);
                 }
                 lbl_ataqueMolho.setVisible(true);
