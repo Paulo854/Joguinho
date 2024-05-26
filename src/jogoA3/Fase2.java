@@ -12,8 +12,14 @@ import javax.swing.JOptionPane;
 public class Fase2 extends Fase1 implements ActionListener{
 	ArmazenaControle controlador = new ArmazenaControle();
 	jogoPrincipal jogo = new jogoPrincipal();
-	public  Fase2(int pontos, int vida) {
+	public  Fase2(int pontos, int vida, int acumadoDeVida) {
+		if(acumadoDeVida > 2) {
+    		acumaVida = 2;
+    	}else {
+    		acumadoDeVida = acumaVida;
+    	}        
 		super.pontos = pontos;
+		super.acumaVida = acumaVida;
 		super.barraHeroi.setValue(vida);
 	}
 		
@@ -22,6 +28,8 @@ public class Fase2 extends Fase1 implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			
 			controlador.setScore2(pontos*0.50);
+			super.vidaRecom = 50;
+			
 			
 			super.lbl_botaoAtaqueN.setVisible(false);
 			super.lbl_defesabacaxi.setVisible(false);
@@ -36,16 +44,30 @@ public class Fase2 extends Fase1 implements ActionListener{
 
 
 			
+			if(acumaVida + 1 <= 2) {
+		        if(pontos  % 5 == 0) {
+		        	++pontos;
+		        	System.out.println("qtde antes: "+acumaVida);
+		        	++acumaVida;
+		        	System.out.println("Qtde dps"+acumaVida);
+		        }
+		        }else {
+		        	
+		        }     
+			
 			if(super.barraVilao2.getValue() <= 0 ) {
 				JOptionPane.showMessageDialog(null, "Parabéns você conseguiu");
 				int vidaHeroi = super.barraHeroi.getValue();
-				Fase3 f3 = new Fase3(pontos, vidaHeroi);
+				Fase3 f3 = new Fase3(pontos, vidaHeroi, acumaVida);
 				f3.setVisible(true);
 				super.timer.stop();
 				dispose();
 			}
 			if(super.barraHeroi.getValue() <= 0) {
 				super.lbl_heroi.setIcon(new ImageIcon(getClass().getResource("morte.png")));
+				lbl_botaoAtaqueN2.setVisible(false);
+				lbl_defesaOuvEMelo.setVisible(false);
+	        	lbl_liberarVida.setVisible(false);
 	        	super.lbl_heroi.setBounds(1,320, 500, 500);
 				JOptionPane.showMessageDialog(null, "O burguinho falhou em sua missão, o reino da cozinha perdeu seu principe\n seu score foi de: "+controlador.getScore2());
 				super.timer.stop();

@@ -28,13 +28,14 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_acao1;
     public JLabel lbl_acao;
     public JLabel lbl_liberarVida;
+    public int vidaRecom = 30;
     public int defendeBacaxi;
     public int defendeOuvEMelo;
     public int defendepericles;
     public int ataqueNormalVilao;
     public int ataqueNormalHeroi;
     public int superAtaqueVilao;
-    public int superAtaqueHeroi;
+    public int superAtaqueHeroi; 
     public int errarAtaqueVilao;
     public int errarAtaqueHeroi;
     public int pontos = 1;
@@ -132,11 +133,11 @@ public class Fase1 extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
             	if(acumaVida >= 1) {
-            		barraHeroi.setValue(barraHeroi.getValue() + 30);
-            		lbl_acao.setText("Parabens você ganhou 30 de vida");
+            		barraHeroi.setValue(barraHeroi.getValue() + vidaRecom);
+            		lbl_acao.setText("Parabens você ganhou "+	vidaRecom+" de vida");
             		 --acumaVida;
             		++pontos;
-            		System.out.print("qtd acumulado "+acumaVida+" qtd acumulado ponto "+pontos);
+            		System.out.print("qtd acumulado "+acumaVida+" qtd acumulado ponto "+pontos +" Sua vida foi para: "+vidaRecom);
             	}else {
             		lbl_acao.setText("Você não atingiu o número de turno necessário");
             	}
@@ -191,7 +192,7 @@ public class Fase1 extends JFrame implements ActionListener {
                     }
             }
         });
-        lbl_defesaPericles.setBounds(150, 290, 100, 100);
+        lbl_defesaPericles.setBounds(150, 200, 100, 100);
         lbl_defesaPericles.setVisible(false);
         backgroundPanel.add(lbl_defesaPericles); 
         
@@ -215,7 +216,7 @@ public class Fase1 extends JFrame implements ActionListener {
                 } else if (vida <= 6) {
                 	lbl_acao.setVisible(true);
             		lbl_acao.setText("Inimigo atingido!");
-                    barraVilao2.setValue(barraVilao.getValue() - normalAtaque);
+                    barraVilao.setValue(barraVilao.getValue() - normalAtaque);
                 }else if(bacaxi <= 8) {
                 	lbl_acao.setVisible(true);
             		lbl_acao.setText("Caramba! O inimigo defendeu!");
@@ -223,7 +224,7 @@ public class Fase1 extends JFrame implements ActionListener {
                 }else {
                 	lbl_acao.setVisible(true);
             		lbl_acao.setText("O ataque acertou um ponto fraco!");
-                    barraVilao2.setValue(barraVilao.getValue() - normalAtaque * 2);
+                    barraVilao.setValue(barraVilao.getValue() - normalAtaque * 2);
                 }
                 if (bacaxi <= 5) {
                 	lbl_acao1.setVisible(true);
@@ -255,12 +256,12 @@ public class Fase1 extends JFrame implements ActionListener {
             @Override
             public void mouseClicked(MouseEvent e) {
             	int vida;
-                int bacaxi;
+                int coleEmelo;
                 int normalAtaque = 12;
-                int AtaqueveOuveMelo = 10;
+                int AtaqueleColeEMelo = 10;
                 Random r = new Random();
                 vida = r.nextInt(10);
-                bacaxi = r.nextInt(10);
+                coleEmelo = r.nextInt(10);
                 if (vida <= 2) {
                 	lbl_acao.setVisible(true);
             		lbl_acao.setText("Errou...");
@@ -268,7 +269,7 @@ public class Fase1 extends JFrame implements ActionListener {
                 	lbl_acao.setVisible(true);
             		lbl_acao.setText("Inimigo atingido!");
                     barraVilao2.setValue(barraVilao2.getValue() - normalAtaque);
-                }else if(bacaxi <= 8) {
+                }else if(coleEmelo <= 8) {
                 	lbl_acao.setVisible(true);
             		lbl_acao.setText("Caramba! O inimigo defendeu!");
 
@@ -277,20 +278,20 @@ public class Fase1 extends JFrame implements ActionListener {
             		lbl_acao.setText("O ataque acertou um ponto fraco!");
                     barraVilao2.setValue(barraVilao2.getValue() - normalAtaque * 2);
                 }
-                if (bacaxi <= 5) {
+                if (coleEmelo <= 5) {
                 	lbl_acao1.setVisible(true);
             		lbl_acao1.setText("... que bom que ele errou");
             		lbl_acao1.setBounds(880, 10, 9999, 50);
-                } else if (bacaxi <= 7) {
+                } else if (coleEmelo <= 7) {
                 	lbl_acao1.setVisible(true);
             		lbl_acao1.setText("Você foi atingido!");
             		lbl_acao1.setBounds(990, 10, 9999, 50);
-                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo);
+                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueleColeEMelo);
                 } else {
                 	lbl_acao1.setVisible(true);
             		lbl_acao1.setText("Ai! Esse ataque foi muito forte...");
             		lbl_acao1.setBounds(800, 10, 9999, 50);
-                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueveOuveMelo * 2);
+                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueleColeEMelo * 2);
                 }
             lbl_ataqueMolho.setVisible(true);
                 timerAtaqueMolho.restart();
@@ -308,35 +309,55 @@ public class Fase1 extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
             	int vida;
                 int pericles;
-                int normalAtaque = 15;
+                int normalAtaque = 20;
                 int AtaquePericles = 50;
                 Random r = new Random();
-                vida = r.nextInt(100);
-                pericles = r.nextInt(100);
-                if (vida <= 10) {
-                    System.out.print("Você errou o ataque");
-                } else if (vida <= 70) {
-                    System.out.println("Você acetou um ataque normal");
+                vida = r.nextInt(10);
+                pericles = r.nextInt(10);
+                if (vida <= 2) {
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("Errou...");
+                } else if (vida <= 8) {
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("Inimigo atingido!");
                     barraVilao3.setValue(barraVilao3.getValue() - normalAtaque);
-                }else if(pericles == 60 || pericles == 70){
-                	System.out.print("Pericles denfedeu seu ataque");
+                }else if(pericles == 9) {
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("Caramba! O inimigo defendeu!");
                 }else {
-                	System.out.println("Você acertou um super ataque");
-                	barraVilao3.setValue(barraVilao3.getValue() - normalAtaque * 2);
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("O ataque acertou um ponto fraco!");
+                    barraVilao3.setValue(barraVilao3.getValue() - normalAtaque * 2);
                 }
-                if (pericles <= 2) {
-                    System.out.println("O Pericles errou o ataque deles");
-                } else if (pericles <= 5) {
-                    System.out.println("O Cole e o Melo acertou um ataque em você de: " + AtaquePericles);
+                if (pericles <= 3) {
+                	lbl_acao1.setVisible(true);
+            		lbl_acao1.setText("... que bom que ele errou");
+            		lbl_acao1.setBounds(880, 10, 9999, 50);
+                } else if (pericles > 3 && pericles <= 6) {
+                	lbl_acao1.setVisible(true);
+            		lbl_acao1.setText("Você foi atingido!");
+            		lbl_acao1.setBounds(990, 10, 9999, 50);
                     barraHeroi.setValue(barraHeroi.getValue() - AtaquePericles);
+                }else if(pericles > 6 && pericles <= 8) {
+                    	lbl_acao1.setVisible(true);
+                		lbl_acao1.setText("Ai! Esse ataque foi muito forte...");
+                		lbl_acao1.setBounds(800, 10, 9999, 50);
+                        barraHeroi.setValue(barraHeroi.getValue() - AtaquePericles * 2);
+                    } else {
+                    	if(barraVilao3.getValue() <= 950) {
+                    lbl_acao1.setVisible(true);
+                	lbl_acao1.setText("Tome cuidado, ele regenerou vida");
+                	lbl_acao1.setBounds(780, 10, 9999, 50);
+                	barraVilao3.setValue(barraVilao3.getValue() + 40);
+                    	}
                 }
-                lbl_ataqueMolho.setVisible(true);
+            lbl_ataqueMolho.setVisible(true);
                 timerAtaqueMolho.restart();
                 ++pontos;
-            }
+        }
         });
         lbl_botaoAtaqueN3.setVisible(false);
-        lbl_botaoAtaqueN3.setBounds(10, 290, 100, 100);
+        lbl_botaoAtaqueN3.setBounds(10, 200, 100, 100);
         backgroundPanel.add(lbl_botaoAtaqueN3);
 
         
@@ -441,16 +462,22 @@ public class Fase1 extends JFrame implements ActionListener {
 
         controlador.setScore1(pontos * 0.26);
 
+        if(acumaVida + 1 <= 2) {
         if(pontos  % 5 == 0) {
-        	System.out.print("qtde antes: "+acumaVida);
-        	++acumaVida;
         	++pontos;
-        	System.out.print("Qtde dps"+acumaVida);
+        	System.out.println("qtde antes: "+acumaVida);
+        	++acumaVida;
+        	System.out.println("Qtde dps"+acumaVida);
         }
-        
+        }else {
+        	
+        }        
         if (barraHeroi.getValue() <= 0) {
         	lbl_heroi.setIcon(new ImageIcon(getClass().getResource("morte.png")));
-        	lbl_heroi.setBounds(1,250, 360, 360);
+        	lbl_botaoAtaqueN.setVisible(false);
+        	lbl_defesabacaxi.setVisible(false);
+        	lbl_liberarVida.setVisible(false);
+        	lbl_heroi.setBounds(1,250, 500, 500);
             JOptionPane.showMessageDialog(null, "O burguinho falhou em sua missão, o reino da cozinha perdeu seu principe");
             timer.stop();
             dispose();
@@ -458,7 +485,7 @@ public class Fase1 extends JFrame implements ActionListener {
         if (barraVilao.getValue() <= 0) {
             JOptionPane.showMessageDialog(null, "Parabéns você conseguiu");
             int vidaHeroi = barraHeroi.getValue();
-            Fase2 f2 = new Fase2(pontos, vidaHeroi);
+            Fase2 f2 = new Fase2(pontos, vidaHeroi, acumaVida);
             f2.setVisible(true);
             timer.stop();
             dispose();
