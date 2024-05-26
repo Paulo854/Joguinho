@@ -17,8 +17,6 @@ public class jogoPrincipal extends JFrame{
 	public JLabel lbl_iniciar;
 	public JLabel lbl_score;
 	public JLabel lbl_title;
-	public double score = 0;
-	
 	
 	 public class BackgroundPanel extends JPanel {
 	        private Image backgroundImage;
@@ -59,7 +57,7 @@ public class jogoPrincipal extends JFrame{
             //c1.setVisible(true);
         	Fase1 f1 = new Fase1();
         	f1.setVisible(true);
-            dispose();
+             dispose();
         }});
         lbl_iniciar.setBounds(450, 500, 256, 120);
         backgroundPanel.add(lbl_iniciar);

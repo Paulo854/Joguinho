@@ -18,7 +18,7 @@ public class ArmazenaControle{
 	}
 	
 	public void setScore1(double score) {
-		this.score1 = score;
+		this.score1 = score - 2;
 	}
 	public double getScore1() {
 		return this.score1;

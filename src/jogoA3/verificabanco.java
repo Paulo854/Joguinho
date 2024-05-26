@@ -21,9 +21,9 @@ public class verificabanco {
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
-                this.nomeMelhor = resultado.getString("userName"); // Corrigido para "userName"
+                this.nomeMelhor = resultado.getString("userName"); 
             }
-         // Fechar a conexão e o statement
+         
             resultado.close();
             stmt.close();
             conexão.close();
@@ -38,7 +38,7 @@ public class verificabanco {
     
     public double getMelhorScore() {
         try {
-            // Conexão com o banco de dados
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexão = DriverManager.getConnection("jdbc:mysql://us-cluster-east-01.k8s.cleardb.net:3306/heroku_f9bf39b8613908b", "bc62cb06767181", "1cea70b3");
             String consulta = "select userName, score from pontuacao order by score desc";
@@ -49,7 +49,7 @@ public class verificabanco {
             if (resultado.next()) {
                 this.scoreMelhor = resultado.getDouble("score");
             }
-         // Fechar a conexão e o statement
+        
             resultado.close();
             stmt.close();
             conexão.close();
@@ -68,14 +68,14 @@ public class verificabanco {
             String inserir = "INSERT INTO pontuacao (userName, score, date) VALUES (?, ?, NOW())";
             PreparedStatement stmt = conexão.prepareStatement(inserir);
 
-            // Substituir os parâmetros na consulta
+           
             stmt.setString(1, nome);
             stmt.setDouble(2, score);
 
-            // Executar a inserção
+           
             int linhasAfetadas = stmt.executeUpdate();
             
-            // Fechar a conexão e o statement
+           
             stmt.close();
             conexão.close();
 
