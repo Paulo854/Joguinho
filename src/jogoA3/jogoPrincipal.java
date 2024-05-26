@@ -63,10 +63,10 @@ public class jogoPrincipal extends JFrame{
         backgroundPanel.add(lbl_iniciar);
         
         lbl_score = new JLabel();
-        lbl_score.setText("O " + banco.getNomeDoScore() + " teve a maior pontuação sendo ela: " + banco.getMelhorScore());
+        lbl_score.setText("O(a) " + banco.getNomeDoScore() + " teve a maior pontuação sendo ela: " + banco.getMelhorScore());
         Font fonteTamanho = new Font("Press Start 2P", Font.PLAIN, 25); 
         lbl_score.setFont(fonteTamanho);
-        lbl_score.setForeground(Color.YELLOW); 
+        lbl_score.setForeground(Color.BLACK); 
         lbl_score.setBounds(10, 10, 9999, 50);
         backgroundPanel.add(lbl_score);
 

@@ -15,7 +15,7 @@ public class verificabanco {
         try {
             // Conexão com o banco de dados
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://us-cluster-east-01.k8s.cleardb.net:3306/heroku_f9bf39b8613908b", "bc62cb06767181", "1cea70b3");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
             String consulta = "select userName, score from pontuacao order by score desc";
             PreparedStatement stmt = conexão.prepareStatement(consulta);
             ResultSet resultado = stmt.executeQuery();
@@ -40,7 +40,7 @@ public class verificabanco {
         try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://us-cluster-east-01.k8s.cleardb.net:3306/heroku_f9bf39b8613908b", "bc62cb06767181", "1cea70b3");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
             String consulta = "select userName, score from pontuacao order by score desc";
 
             PreparedStatement stmt = conexão.prepareStatement(consulta);
@@ -64,7 +64,7 @@ public class verificabanco {
     public void setBanco(String nome, double score) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://us-cluster-east-01.k8s.cleardb.net:3306/heroku_f9bf39b8613908b", "bc62cb06767181", "1cea70b3");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
             String inserir = "INSERT INTO pontuacao (userName, score, date) VALUES (?, ?, NOW())";
             PreparedStatement stmt = conexão.prepareStatement(inserir);
 
