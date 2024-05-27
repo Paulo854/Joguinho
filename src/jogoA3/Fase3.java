@@ -9,6 +9,7 @@ public class Fase3 extends Fase1 implements ActionListener {
     ArmazenaControle controlador = new ArmazenaControle();
     verificabanco banco = new verificabanco();
     jogoPrincipal jogo = new jogoPrincipal();
+    public int controladorPontos = 0;
 
     public Fase3(int pontos, int vida, int acumadoDeVida) {
     	super();
@@ -19,14 +20,16 @@ public class Fase3 extends Fase1 implements ActionListener {
     	}
         
         super.pontos = pontos;
-        int novaVida = vida * 150;
+        int novaVida = vida * 2;
         super.barraHeroi.setValue(novaVida);
         setBackgroundImage(new ImageIcon(getClass().getResource("fogao.jpg")).getImage());
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        double score = pontos * 1.75;
+    	int pontosFinais = pontos - controladorPontos;
+    	
+        double score = pontosFinais * 1.75;
         super.vidaRecom = 85;
 
         super.lbl_botaoAtaqueN.setVisible(false);
@@ -51,6 +54,7 @@ public class Fase3 extends Fase1 implements ActionListener {
 	        if(pontos  % 5 == 0) {
 	        	++pontos;
 	        	System.out.println("qtde antes: "+acumaVida);
+	        	++controladorPontos;
 	        	++acumaVida;
 	        	System.out.println("Qtde dps"+acumaVida);
 	        }
@@ -63,7 +67,7 @@ public class Fase3 extends Fase1 implements ActionListener {
             JOptionPane.showMessageDialog(null, "O principe cumpriu sua missão, P. R. Icles foi derrotado, burguinho retorna ao reino triunfante");
             double somar = controlador.getScore1() + controlador.getScore2() + score;
             banco.setBanco(controlador.getNome(), somar);
-            JOptionPane.showMessageDialog(null, "Olá " + controlador.getNome() + " vamos resumo do seu game\nBatalha 1 Caxi = " + controlador.getScore1() + "\nBatalha 2 Cole e Melo = " + controlador.getScore2() + "\nBatalha com o P. R. Icles = "+score+"\nA soma do seus pontos resultou em: " + somar);
+            JOptionPane.showMessageDialog(null, "Olá " + controlador.getNome() + " vamos ao resumo do seu game\nBatalha 1 Caxi = " + controlador.getScore1() + "\nBatalha 2 Cole e Melo = " + controlador.getScore2() + "\nBatalha com o P. R. Icles = "+score+"\nA soma do seus pontos resultou em: " + somar);
             super.timer.stop();
             dispose();
         }

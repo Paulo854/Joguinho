@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 public class Fase2 extends Fase1 implements ActionListener{
 	ArmazenaControle controlador = new ArmazenaControle();
 	jogoPrincipal jogo = new jogoPrincipal();
+	public int controladorPontos = 0;
 	public  Fase2(int pontos, int vida, int acumadoDeVida) {
 		if(acumadoDeVida > 2) {
     		acumaVida = 2;
@@ -23,11 +24,14 @@ public class Fase2 extends Fase1 implements ActionListener{
 		super.barraHeroi.setValue(vida);
 	}
 		
+		
 	  
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			controlador.setScore2(pontos*0.50);
+			int pontosFinais = pontos - controladorPontos;
+			
+			controlador.setScore2(pontosFinais);
 			super.vidaRecom = 50;
 			
 			
@@ -40,7 +44,7 @@ public class Fase2 extends Fase1 implements ActionListener{
 			super.barraVilao.setVisible(false);
 			super.lbl_ataqueMolho.setBounds(750, 450, 360, 360);
 			super.barraVilao2.setVisible(true);;
-			super.setTitle("Batala 2 Cole e Melo");
+			super.setTitle("Batalha 2 Cole e Melo");
 
 
 			
@@ -48,6 +52,7 @@ public class Fase2 extends Fase1 implements ActionListener{
 		        if(pontos  % 5 == 0) {
 		        	++pontos;
 		        	System.out.println("qtde antes: "+acumaVida);
+		        	++controladorPontos;
 		        	++acumaVida;
 		        	System.out.println("Qtde dps"+acumaVida);
 		        }

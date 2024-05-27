@@ -40,6 +40,7 @@ public class Fase1 extends JFrame implements ActionListener {
     public int errarAtaqueHeroi;
     public int pontos = 1;
     public Timer timer;
+    public int controladorPontos;
     public int vidaBacaxi = 800;
     public int vidaOuvEmelo = 1200;
     public int vidaPericles = 1800;
@@ -316,6 +317,7 @@ public class Fase1 extends JFrame implements ActionListener {
                 pericles = r.nextInt(10);
                 if (vida <= 2) {
                 	lbl_acao.setVisible(true);
+                	
             		lbl_acao.setText("Errou...");
                 } else if (vida <= 8) {
                 	lbl_acao.setVisible(true);
@@ -340,7 +342,7 @@ public class Fase1 extends JFrame implements ActionListener {
                     barraHeroi.setValue(barraHeroi.getValue() - AtaquePericles);
                 }else if(pericles > 6 && pericles <= 8) {
                     	lbl_acao1.setVisible(true);
-                		lbl_acao1.setText("Ai! Esse ataque foi muito forte...");
+                    	lbl_acao1.setText("Ai! Esse ataque foi muito forte...");
                 		lbl_acao1.setBounds(800, 10, 9999, 50);
                         barraHeroi.setValue(barraHeroi.getValue() - AtaquePericles * 2);
                     } else {
@@ -460,12 +462,15 @@ public class Fase1 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Random rand = new Random();
 
-        controlador.setScore1(pontos * 0.26);
+        int pontosFinal = pontos - controladorPontos;
+        
+        controlador.setScore1(pontosFinal);
 
         if(acumaVida + 1 <= 2) {
         if(pontos  % 5 == 0) {
         	++pontos;
         	System.out.println("qtde antes: "+acumaVida);
+        	++controladorPontos;
         	++acumaVida;
         	System.out.println("Qtde dps"+acumaVida);
         }
