@@ -19,7 +19,7 @@ public class Fase3 extends Fase1 implements ActionListener {
     		acumadoDeVida = acumaVida;
     	}
         
-        super.pontos = pontos = 0;
+        super.pontos = pontos = 1;
         int novaVida = vida * 2;
         super.barraHeroi.setValue(novaVida);
         setBackgroundImage(new ImageIcon(getClass().getResource("fogao.jpg")).getImage());
@@ -28,6 +28,7 @@ public class Fase3 extends Fase1 implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     	int pontosFinais = pontos - controladorPontos;
+    	pontosFinais = pontosFinais - 1;
     	
         double score = pontosFinais * 1.75;
         super.vidaRecom = 85;

@@ -19,7 +19,7 @@ public class Fase2 extends Fase1 implements ActionListener{
     	}else {
     		acumadoDeVida = acumaVida;
     	}        
-		super.pontos = pontos = 0;
+		super.pontos = pontos = 1;
 		super.acumaVida = acumaVida;
 		super.barraHeroi.setValue(vida);
 	}
@@ -30,6 +30,7 @@ public class Fase2 extends Fase1 implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			
 			int pontosFinais = pontos - controladorPontos;
+			pontosFinais = pontosFinais - 1;
 			
 			controlador.setScore2(pontosFinais);
 			super.vidaRecom = 50;
