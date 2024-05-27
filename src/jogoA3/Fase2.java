@@ -19,7 +19,7 @@ public class Fase2 extends Fase1 implements ActionListener{
     	}else {
     		acumadoDeVida = acumaVida;
     	}        
-		super.pontos = pontos;
+		super.pontos = pontos = 0;
 		super.acumaVida = acumaVida;
 		super.barraHeroi.setValue(vida);
 	}

@@ -40,6 +40,7 @@ public class Fase1 extends JFrame implements ActionListener {
     public int errarAtaqueHeroi;
     public int pontos = 1;
     public Timer timer;
+    public int finalPontos;
     public int controladorPontos;
     public int vidaBacaxi = 800;
     public int vidaOuvEmelo = 1200;
@@ -462,9 +463,10 @@ public class Fase1 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Random rand = new Random();
 
-        int pontosFinal = pontos - controladorPontos;
+        finalPontos = pontos - controladorPontos;
+        finalPontos = finalPontos - 1;
         
-        controlador.setScore1(pontosFinal);
+        controlador.setScore1(finalPontos);
 
         if(acumaVida + 1 <= 2) {
         if(pontos  % 5 == 0) {
