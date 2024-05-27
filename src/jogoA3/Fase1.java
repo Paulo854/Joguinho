@@ -106,7 +106,11 @@ public class Fase1 extends JFrame implements ActionListener {
 
         lbl_defesabacaxi = new JLabel();
         lbl_defesabacaxi.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
-        lbl_defesabacaxi.addMouseListener(new MouseAdapter() {
+
+        Defesa defesaAbacaxi = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaAbacaxi.defender(pontos, ataqueBacaxi);
+        
+        /*lbl_defesabacaxi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
             	lbl_acao1.setVisible(false);
@@ -125,7 +129,7 @@ public class Fase1 extends JFrame implements ActionListener {
                     	++pontos;
                     }
             }
-         });
+         });*/
         lbl_defesabacaxi.setBounds(150, 290, 100, 100);
         backgroundPanel.add(lbl_defesabacaxi); 
         
@@ -150,7 +154,11 @@ public class Fase1 extends JFrame implements ActionListener {
         
         lbl_defesaOuvEMelo = new JLabel();
         lbl_defesaOuvEMelo.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
-        lbl_defesaOuvEMelo.addMouseListener(new MouseAdapter() {
+
+        Defesa defesaAbacaxi = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaAbacaxi.defender(pontos, ataqueOuvEMelo);
+        
+        /*lbl_defesaOuvEMelo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Random d = new Random();
@@ -167,14 +175,17 @@ public class Fase1 extends JFrame implements ActionListener {
                     	++pontos;
                     }
             }
-        });
+        });*/
         lbl_defesaOuvEMelo.setBounds(150, 290, 100, 100);
         lbl_defesaOuvEMelo.setVisible(false);
         backgroundPanel.add(lbl_defesaOuvEMelo); 
         
         lbl_defesaPericles = new JLabel();
         lbl_defesaPericles.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
-        lbl_defesaPericles.addMouseListener(new MouseAdapter() {
+
+        Defesa defesaAbacaxi = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaAbacaxi.defender(pontos, ataquePericles);
+        /*lbl_defesaPericles.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
             	lbl_acao.setVisible(false);
@@ -193,7 +204,7 @@ public class Fase1 extends JFrame implements ActionListener {
                     	++pontos;
                     }
             }
-        });
+        });*/
         lbl_defesaPericles.setBounds(150, 200, 100, 100);
         lbl_defesaPericles.setVisible(false);
         backgroundPanel.add(lbl_defesaPericles); 
