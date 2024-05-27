@@ -12,7 +12,7 @@ public class Defesa {
 		this.lbl_defesa=lbl_defesa;
 	}
 	
-	public int defender(int pontos, int ataque) {
+	public int defender(int pontos, int ataqueVilao) {
     lbl_defesa.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -28,7 +28,7 @@ public class Defesa {
                 }else {
                 	lbl_acaoHeroi.setVisible(true);
                 	lbl_acaoHeroi.setText("Ah não! Sua defesa não foi forte o suficiente!");
-                	barraHeroi.setValue(barraHeroi.getValue() - ataque);
+                	barraHeroi.setValue(barraHeroi.getValue() - ataqueVilao);
                 	++pontos;
                 }
         }
