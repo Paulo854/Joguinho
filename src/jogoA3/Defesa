@@ -5,7 +5,7 @@ public class Defesa {
 	JLabel lbl_defesa, lbl_acaoHeroi, lbl_acaoVilao;
 	JProgressBar BarraHeroi;
 	
-	public Defender(JProgressBar BarraHeroi, JLabel lbl_defesa, JLabel lbl_acaoHeroi, JLabel lbl_acaoVilao) {
+	public Defesa(JProgressBar BarraHeroi, JLabel lbl_defesa, JLabel lbl_acaoHeroi, JLabel lbl_acaoVilao) {
 		this.BarraHeroi=BarraHeroi;
 		this.lbl_acaoHeroi=lbl_acaoHeroi;
 		this.lbl_acaoVilao=lbl_acaoVilao;
