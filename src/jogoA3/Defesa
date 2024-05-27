@@ -1,0 +1,38 @@
+//SUGESTÃO DE CLASSE (SEM IMPORTES)
+
+public class Defesa {
+	
+	JLabel lbl_defesa, lbl_acaoHeroi, lbl_acaoVilao;
+	JProgressBar BarraHeroi;
+	
+	public Defender(JProgressBar BarraHeroi, JLabel lbl_defesa, JLabel lbl_acaoHeroi, JLabel lbl_acaoVilao) {
+		this.BarraHeroi=BarraHeroi;
+		this.lbl_acaoHeroi=lbl_acaoHeroi;
+		this.lbl_acaoVilao=lbl_acaoVilao;
+		this.lbl_defesa=lbl_defesa;
+	}
+	
+	public int defender(int pontos, int ataque) {
+    lbl_defesa.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        	lbl_acaoVilao.setVisible(false);
+        	lbl_acaoHeroi.setVisible(false);
+            Random d = new Random();
+            int defesa;
+            defesa = d.nextInt(10);
+            	if(defesa <= 5) {
+            		lbl_acaoHeroi.setVisible(true);
+                	lbl_acaoHeroi.setText("Defendeu!");
+                	++pontos;
+                }else {
+                	lbl_acaoHeroi.setVisible(true);
+                	lbl_acaoHeroi.setText("Ah não! Sua defesa não foi forte o suficiente!");
+                	barraHeroi.setValue(barraHeroi.getValue() - ataque);
+                	++pontos;
+                }
+        }
+     });
+    return pontos;
+	}
+}
