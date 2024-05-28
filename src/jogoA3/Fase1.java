@@ -155,8 +155,8 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_defesaOuvEMelo = new JLabel();
         lbl_defesaOuvEMelo.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
 
-        Defesa defesaAbacaxi = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
-        defesaAbacaxi.defender(pontos, ataqueOuvEMelo);
+        Defesa defesaOuvEMelo = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaOuvEMelo.defender(pontos, ataqueOuvEMelo);
         
         /*lbl_defesaOuvEMelo.addMouseListener(new MouseAdapter() {
             @Override
@@ -183,8 +183,8 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_defesaPericles = new JLabel();
         lbl_defesaPericles.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
 
-        Defesa defesaAbacaxi = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
-        defesaAbacaxi.defender(pontos, ataquePericles);
+        Defesa defesaPericles = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaPericles.defender(pontos, ataquePericles);
         /*lbl_defesaPericles.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -211,6 +211,10 @@ public class Fase1 extends JFrame implements ActionListener {
         
         lbl_botaoAtaqueN = new JLabel();
         lbl_botaoAtaqueN.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+        
+        Ataque ataque1 = new Ataque(BarraHeroi, lbl_botaoAtaque, lbl_acaoHeroi, lbl_acaoVilao);
+        ataque1.atacar(timerAtaqueMolho, lbl_ataqueMolho, 2, 6, 8, 5, 7, ataqueAbacaxi);
+        
         lbl_botaoAtaqueN.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -265,6 +269,10 @@ public class Fase1 extends JFrame implements ActionListener {
         
         lbl_botaoAtaqueN2 = new JLabel();
         lbl_botaoAtaqueN2.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+
+        Ataque ataque2 = new Ataque(BarraHeroi, lbl_botaoAtaque, lbl_acaoHeroi, lbl_acaoVilao);
+        ataque2.atacar(timerAtaqueMolho, lbl_ataqueMolho, 2, 6, 8, 5, 7, ataqueAbacaxi);
+
         lbl_botaoAtaqueN2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -317,6 +325,10 @@ public class Fase1 extends JFrame implements ActionListener {
 
         lbl_botaoAtaqueN3 = new JLabel();
         lbl_botaoAtaqueN3.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+
+        Ataque ataque3 = new Ataque(BarraHeroi, lbl_botaoAtaque, lbl_acaoHeroi, lbl_acaoVilao);
+        ataque3.atacar(timerAtaqueMolho, lbl_ataqueMolho, 2, 8, 9, 5, 7, ataqueAbacaxi);
+        
         lbl_botaoAtaqueN3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
