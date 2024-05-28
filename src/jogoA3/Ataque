@@ -11,7 +11,7 @@ public class Ataque {
 		this.lbl_botaoAtaque=lbl_botaoAtaque;
 	}
 	
-	public int atacar(JProgressBar BarraHeroi, JProgressBar BarraVilao, JLabel lbl_botaoAtaque, JLabel lbl_acaoHeroi, JLabel lbl_acaoVilao, Timer timerAtaqueMolho, JLabel lbl_ataqueMolho,int a,int b,int c,int d,int e, int ataqueVilao){
+	public int atacar(Timer timerAtaqueMolho, JLabel lbl_ataqueMolho,int a,int b,int c,int d,int e, int ataqueVilao){
 	lbl_botaoAtaque.addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
