@@ -2,10 +2,6 @@ package jogoA3;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Random;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -37,11 +33,12 @@ public class Fase3 extends Fase1 implements ActionListener {
         double score = pontosFinais * 1.75;
         super.vidaRecom = 85;
 
-        super.posibilidaDefender = 25;
-                
-        
         super.lbl_botaoAtaqueN.setVisible(false);
+        super.lbl_botaoAtaqueN2.setVisible(false);
         super.lbl_botaoAtaqueN3.setVisible(true);
+        super.lbl_defesabacaxi.setVisible(false);
+		super.lbl_defesaOuvEMelo.setVisible(false);
+		super.lbl_defesaPericles.setVisible(true);
 		super.lbl_liberarVida.setBounds(250, 200, 100, 100);
         super.lbl_heroi.setVisible(false);
         super.lbl_heroiFase3.setVisible(true);
@@ -78,6 +75,7 @@ public class Fase3 extends Fase1 implements ActionListener {
         if(super.barraHeroi.getValue() <= 0) {
         	super.lbl_heroiFase3.setIcon(new ImageIcon(getClass().getResource("morte.png")));
         	lbl_botaoAtaqueN3.setVisible(false);
+        	lbl_defesaPericles.setVisible(false);
         	lbl_liberarVida.setVisible(false);
         	super.lbl_heroiFase3.setBounds(1, 210, 500, 500);
         	JOptionPane.showMessageDialog(null, "Você não pertence mas a este reino saia daqui, seu score foi de: " + controlador.getScore1());

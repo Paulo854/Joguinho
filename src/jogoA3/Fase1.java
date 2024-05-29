@@ -19,8 +19,11 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_heroiFase3;
     public JLabel lbl_pontos;
     public JLabel lbl_ataqueMolho;
-    public JLabel lbl_defender;
+    public JLabel lbl_defesabacaxi;
+    public JLabel lbl_defesaOuvEMelo;
+    public JLabel lbl_defesaPericles;
     public JLabel lbl_botaoAtaqueN;
+    public JLabel lbl_botaoAtaqueN2;
     public JLabel lbl_botaoAtaqueN3;
     public JLabel lbl_acao1;
     public JLabel lbl_acao;
@@ -37,15 +40,12 @@ public class Fase1 extends JFrame implements ActionListener {
     public int errarAtaqueHeroi;
     public int pontos = 1;
     public Timer timer;
-    public int posibilidaDefender = 3;
     public int finalPontos;
     public int controladorPontos;
     public int vidaBacaxi = 800;
     public int vidaOuvEmelo = 1200;
     public int vidaPericles = 1800;
     public int acumaVida = 0;
-    public int normalAtaque = 7;
-    public int ataqueVilao = 5;
 
     ArmazenaControle controlador = new ArmazenaControle();
     JProgressBar barraHeroi = new JProgressBar();
@@ -104,9 +104,13 @@ public class Fase1 extends JFrame implements ActionListener {
         });
         timerAtaqueMolho.setRepeats(false);
 
-        lbl_defender = new JLabel();
-        lbl_defender.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
-        lbl_defender.addMouseListener(new MouseAdapter() {
+        lbl_defesabacaxi = new JLabel();
+        lbl_defesabacaxi.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+
+        /*Defesa defesaAbacaxi = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaAbacaxi.defender(pontos, ataqueBacaxi);
+        
+        /*lbl_defesabacaxi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
             	lbl_acao1.setVisible(false);
@@ -121,13 +125,13 @@ public class Fase1 extends JFrame implements ActionListener {
                     }else {
                     	lbl_acao.setVisible(true);
                     	lbl_acao.setText("Ah não! Sua defesa não foi forte o suficiente!");
-                    	barraHeroi.setValue(barraHeroi.getValue() - posibilidaDefender);
+                    	barraHeroi.setValue(barraHeroi.getValue() - 50);
                     	++pontos;
                     }
             }
-         });
-        lbl_defender.setBounds(150, 290, 100, 100);
-        backgroundPanel.add(lbl_defender); 
+         });*/
+        lbl_defesabacaxi.setBounds(150, 290, 100, 100);
+        backgroundPanel.add(lbl_defesabacaxi); 
         
         lbl_liberarVida = new JLabel();
         lbl_liberarVida.setIcon(new ImageIcon(getClass().getResource("btn_vida.png")));
@@ -147,10 +151,69 @@ public class Fase1 extends JFrame implements ActionListener {
         });
         lbl_liberarVida.setBounds(250, 290, 100, 100);
         backgroundPanel.add(lbl_liberarVida);
-       
+        
+        lbl_defesaOuvEMelo = new JLabel();
+        lbl_defesaOuvEMelo.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+
+        /*Defesa defesaOuvEMelo = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaOuvEMelo.defender(pontos, ataqueOuvEMelo);
+        
+        /*lbl_defesaOuvEMelo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Random d = new Random();
+                int defesa;
+                defesa = d.nextInt(10);
+                	if(defesa <= 5) {
+                		lbl_acao.setVisible(true);
+                    	lbl_acao.setText("Defendeu!");
+                    	++pontos;
+                    }else {
+                    	lbl_acao.setVisible(true);
+                    	lbl_acao.setText("Ah não! Sua defesa não foi forte o suficiente!");
+                    	barraHeroi.setValue(barraHeroi.getValue() - 50);
+                    	++pontos;
+                    }
+            }
+        });*/
+        lbl_defesaOuvEMelo.setBounds(150, 290, 100, 100);
+        lbl_defesaOuvEMelo.setVisible(false);
+        backgroundPanel.add(lbl_defesaOuvEMelo); 
+        
+        lbl_defesaPericles = new JLabel();
+        lbl_defesaPericles.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+
+/*        Defesa defesaPericles = new Defesa(BarraHeroi, lbl_defesa, lbl_acao, lbl_acao1);
+        defesaPericles.defender(pontos, ataquePericles);
+        /*lbl_defesaPericles.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	lbl_acao.setVisible(false);
+            	lbl_acao1.setVisible(false);
+                Random d = new Random();
+                int defesa;
+                defesa = d.nextInt(10);
+                	if(defesa <= 5) {
+                    	lbl_acao.setVisible(true);
+                    	lbl_acao.setText("Defendeu!");
+                    	++pontos;
+                    }else {
+                    	lbl_acao.setVisible(true);
+                    	lbl_acao.setText("Ah não! Sua defesa não foi forte o suficiente!");
+                    	barraHeroi.setValue(barraHeroi.getValue() - 50);
+                    	++pontos;
+                    }
+            }
+        });*/
+        lbl_defesaPericles.setBounds(150, 200, 100, 100);
+        lbl_defesaPericles.setVisible(false);
+        backgroundPanel.add(lbl_defesaPericles); 
         
         lbl_botaoAtaqueN = new JLabel();
         lbl_botaoAtaqueN.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+        
+        Ataque ataque = new Ataque(2, 6, 8, 5, 7, vidaBacaxi);
+        
         lbl_botaoAtaqueN.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -158,6 +221,8 @@ public class Fase1 extends JFrame implements ActionListener {
             	lbl_acao1.setVisible(false);
             	int vida;
                 int bacaxi;
+                int normalAtaque = 7;
+                int ataqueBacaxi = 5;
                 Random r = new Random();
                 vida = r.nextInt(10);
                 bacaxi = r.nextInt(10);
@@ -185,12 +250,12 @@ public class Fase1 extends JFrame implements ActionListener {
                 	lbl_acao1.setVisible(true);
             		lbl_acao1.setText("Você foi atingido!");
             		lbl_acao1.setBounds(970, 10, 9999, 50);
-                    barraHeroi.setValue(barraHeroi.getValue() - ataqueVilao);
+                    barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi);
                 } else {
                 	lbl_acao1.setVisible(true);
             		lbl_acao1.setText("Ai! Esse ataque foi muito forte...");
             		lbl_acao1.setBounds(800, 10, 9999, 50);
-                    barraHeroi.setValue(barraHeroi.getValue() - ataqueVilao * 2);
+                    barraHeroi.setValue(barraHeroi.getValue() - ataqueBacaxi * 2);
                 }
             lbl_ataqueMolho.setVisible(true);
                 timerAtaqueMolho.restart();
@@ -200,9 +265,69 @@ public class Fase1 extends JFrame implements ActionListener {
         lbl_botaoAtaqueN.setBounds(10, 290, 100, 100);
         backgroundPanel.add(lbl_botaoAtaqueN);
         
-     
+        
+        lbl_botaoAtaqueN2 = new JLabel();
+        lbl_botaoAtaqueN2.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+
+        /*Ataque ataque2 = new Ataque();
+        ataque1.atacar(2, 6, 8, 5, 7, vidaOuvEmelo);
+        
+        lbl_botaoAtaqueN2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	int vida;
+                int coleEmelo;
+                int normalAtaque = 12;
+                int AtaqueleColeEMelo = 10;
+                Random r = new Random();
+                vida = r.nextInt(10);
+                coleEmelo = r.nextInt(10);
+                if (vida <= 2) {
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("Errou...");
+                } else if (vida <= 6) {
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("Inimigo atingido!");
+                    barraVilao2.setValue(barraVilao2.getValue() - normalAtaque);
+                }else if(coleEmelo <= 8) {
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("Caramba! O inimigo defendeu!");
+
+                }else {
+                	lbl_acao.setVisible(true);
+            		lbl_acao.setText("O ataque acertou um ponto fraco!");
+                    barraVilao2.setValue(barraVilao2.getValue() - normalAtaque * 2);
+                }
+                if (coleEmelo <= 5) {
+                	lbl_acao1.setVisible(true);
+            		lbl_acao1.setText("... que bom que ele errou");
+            		lbl_acao1.setBounds(880, 10, 9999, 50);
+                } else if (coleEmelo <= 7) {
+                	lbl_acao1.setVisible(true);
+            		lbl_acao1.setText("Você foi atingido!");
+            		lbl_acao1.setBounds(990, 10, 9999, 50);
+                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueleColeEMelo);
+                } else {
+                	lbl_acao1.setVisible(true);
+            		lbl_acao1.setText("Ai! Esse ataque foi muito forte...");
+            		lbl_acao1.setBounds(800, 10, 9999, 50);
+                    barraHeroi.setValue(barraHeroi.getValue() - AtaqueleColeEMelo * 2);
+                }
+            lbl_ataqueMolho.setVisible(true);
+                timerAtaqueMolho.restart();
+                ++pontos;
+        }
+        });
+        lbl_botaoAtaqueN2.setVisible(false);
+        lbl_botaoAtaqueN2.setBounds(10, 290, 100, 100);
+        backgroundPanel.add(lbl_botaoAtaqueN2);
+
         lbl_botaoAtaqueN3 = new JLabel();
         lbl_botaoAtaqueN3.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+
+        /*Ataque ataque3 = new Ataque(BarraHeroi, lbl_botaoAtaque, lbl_acaoHeroi, lbl_acaoVilao);
+        ataque3.atacar(timerAtaqueMolho, lbl_ataqueMolho, 2, 8, 9, 5, 7, ataqueAbacaxi);
+        
         lbl_botaoAtaqueN3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -255,7 +380,7 @@ public class Fase1 extends JFrame implements ActionListener {
                 timerAtaqueMolho.restart();
                 ++pontos;
         }
-        });
+        });*/
         lbl_botaoAtaqueN3.setVisible(false);
         lbl_botaoAtaqueN3.setBounds(10, 200, 100, 100);
         backgroundPanel.add(lbl_botaoAtaqueN3);
@@ -379,6 +504,7 @@ public class Fase1 extends JFrame implements ActionListener {
         if (barraHeroi.getValue() <= 0) {
         	lbl_heroi.setIcon(new ImageIcon(getClass().getResource("morte.png")));
         	lbl_botaoAtaqueN.setVisible(false);
+        	lbl_defesabacaxi.setVisible(false);
         	lbl_liberarVida.setVisible(false);
         	lbl_heroi.setBounds(1,250, 500, 500);
             JOptionPane.showMessageDialog(null, "O burguinho falhou em sua missão, o reino da cozinha perdeu seu principe");

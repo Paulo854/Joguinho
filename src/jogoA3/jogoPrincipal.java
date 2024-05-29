@@ -54,7 +54,9 @@ public class jogoPrincipal extends JFrame{
         lbl_iniciar = new JLabel();
         lbl_iniciar.setIcon(new ImageIcon(getClass().getResource("start.png")));
         lbl_iniciar.addMouseListener(new MouseAdapter(){@Override public void mouseClicked(MouseEvent e){
-            c1.setVisible(true);
+            //c1.setVisible(true);
+        	Fase1 f1 = new Fase1();
+        	f1.setVisible(true);
         	dispose();
         }});
         lbl_iniciar.setBounds(450, 500, 256, 120);
