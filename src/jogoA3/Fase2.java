@@ -35,11 +35,9 @@ public class Fase2 extends Fase1 implements ActionListener{
 			controlador.setScore2(pontosFinais);
 			super.vidaRecom = 50;
 			
+			super.posibilidaDefender = 5;
 			
 			super.lbl_botaoAtaqueN.setVisible(false);
-			super.lbl_defesabacaxi.setVisible(false);
-			super.lbl_defesaOuvEMelo.setVisible(true);
-			super.lbl_botaoAtaqueN2.setVisible(true);
 			super.lbl_vilao.setVisible(false);
 			super.lbl_vilao2.setVisible(true);
 			super.barraVilao.setVisible(false);
@@ -71,8 +69,6 @@ public class Fase2 extends Fase1 implements ActionListener{
 			}
 			if(super.barraHeroi.getValue() <= 0) {
 				super.lbl_heroi.setIcon(new ImageIcon(getClass().getResource("morte.png")));
-				lbl_botaoAtaqueN2.setVisible(false);
-				lbl_defesaOuvEMelo.setVisible(false);
 	        	lbl_liberarVida.setVisible(false);
 	        	super.lbl_heroi.setBounds(1,320, 500, 500);
 				JOptionPane.showMessageDialog(null, "O burguinho falhou em sua missão, o reino da cozinha perdeu seu principe\n seu score foi de: "+controlador.getScore2());
