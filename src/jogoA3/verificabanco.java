@@ -7,11 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class verificabanco {
-    private String nomeMelhor;
-    private double scoreMelhor;
+    private String primerioNome;
+    private double primeiroScore;
+    private String segundoNome;
+    private double segundoScore;
+    private String terceiroNome;
+    private double terceiroScore;
     
     
-    public String getNomeDoScore() {
+    public String getNomePrimeiro() {
         try {
             // Conexão com o banco de dados
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -21,7 +25,7 @@ public class verificabanco {
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
-                this.nomeMelhor = resultado.getString("userName"); 
+                this.primerioNome = resultado.getString("userName"); 
             }
          
             resultado.close();
@@ -33,10 +37,60 @@ public class verificabanco {
             System.err.println("Driver JDBC não encontrado");
             e.printStackTrace();
         }
-        return this.nomeMelhor;
+        return this.primerioNome;
     }
     
-    public double getMelhorScore() {
+    public String getSegundoNome() {
+        try {
+            // Conexão com o banco de dados
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
+            String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 1";
+            PreparedStatement stmt = conexão.prepareStatement(consulta);
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                this.segundoNome = resultado.getString("userName"); 
+            }
+         
+            resultado.close();
+            stmt.close();
+            conexão.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver JDBC não encontrado");
+            e.printStackTrace();
+        }
+        return this.segundoNome;
+    }
+    
+    public String getTerceiroNome() {
+        try {
+            // Conexão com o banco de dados
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
+            String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 2";
+            PreparedStatement stmt = conexão.prepareStatement(consulta);
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                this.terceiroNome = resultado.getString("userName"); 
+            }
+         
+            resultado.close();
+            stmt.close();
+            conexão.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver JDBC não encontrado");
+            e.printStackTrace();
+        }
+        return this.terceiroNome;
+    }
+    
+    public double getPrimeiroScore() {
         try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -47,7 +101,7 @@ public class verificabanco {
             ResultSet resultado = stmt.executeQuery();
 
             if (resultado.next()) {
-                this.scoreMelhor = resultado.getDouble("score");
+                this.primeiroScore = resultado.getDouble("score");
             }
         
             resultado.close();
@@ -59,7 +113,57 @@ public class verificabanco {
             System.err.println("Driver JDBC não encontrado");
             e.printStackTrace();
         }
-        return this.scoreMelhor;
+        return this.primeiroScore;
+    }
+    public double getSegundoScore() {
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
+            String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 1";
+
+            PreparedStatement stmt = conexão.prepareStatement(consulta);
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                this.segundoScore = resultado.getDouble("score");
+            }
+        
+            resultado.close();
+            stmt.close();
+            conexão.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver JDBC não encontrado");
+            e.printStackTrace();
+        }
+        return this.segundoScore;
+    }
+    public double getTerceiroScore() {
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
+            String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 2";
+
+            PreparedStatement stmt = conexão.prepareStatement(consulta);
+            ResultSet resultado = stmt.executeQuery();
+
+            if (resultado.next()) {
+                this.terceiroScore = resultado.getDouble("score");
+            }
+        
+            resultado.close();
+            stmt.close();
+            conexão.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver JDBC não encontrado");
+            e.printStackTrace();
+        }
+        return this.terceiroScore;
     }
     public void setBanco(String nome, double score) {
         try {

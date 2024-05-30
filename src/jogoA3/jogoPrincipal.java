@@ -17,6 +17,10 @@ public class jogoPrincipal extends JFrame {
     public JLabel lbl_score;
     public JLabel lbl_title;
     public JLabel imgLabel;
+    public JLabel lbl_melhor1;
+    public JLabel lbl_melhor2;
+    public JLabel lbl_melhor3;
+    
 
     public class BackgroundPanel extends JPanel {
         private Image backgroundImage;
@@ -68,12 +72,36 @@ public class jogoPrincipal extends JFrame {
         backgroundPanel.add(lbl_iniciar);
 
         lbl_score = new JLabel();
-        lbl_score.setText(banco.getNomeDoScore() + " teve a maior pontuaçã: " + banco.getMelhorScore());
+        lbl_score.setText("HIGHSCORE");
         Font fonteTamanho = new Font("Press Start 2P", Font.PLAIN, 25);
         lbl_score.setFont(fonteTamanho);
         lbl_score.setForeground(Color.ORANGE);
-        lbl_score.setBounds(10, 10, 9999, 50);
+        lbl_score.setBounds(50, 10, 9999, 50);
         backgroundPanel.add(lbl_score);
+        
+        lbl_melhor1 = new JLabel();
+        lbl_melhor1.setText(banco.getNomePrimeiro() +" "+ banco.getPrimeiroScore());
+        Font fonteTamanho2 = new Font("Press Start 2P", Font.PLAIN, 23);
+        lbl_melhor1.setFont(fonteTamanho2);
+        lbl_melhor1.setForeground(Color.ORANGE);
+        lbl_melhor1.setBounds(40, 40, 9999, 50);
+        backgroundPanel.add(lbl_melhor1);
+        
+        lbl_melhor2 = new JLabel();
+        lbl_melhor2.setText(banco.getSegundoNome() +" "+ banco.getSegundoScore());
+        Font fonteTamanho3 = new Font("Press Start 2P", Font.PLAIN, 23);
+        lbl_melhor2.setFont(fonteTamanho3);
+        lbl_melhor2.setForeground(Color.ORANGE);
+        lbl_melhor2.setBounds(40, 70, 9999, 50);
+        backgroundPanel.add(lbl_melhor2);
+        
+        lbl_melhor3 = new JLabel();
+        lbl_melhor3.setText(banco.getTerceiroNome() +" "+ banco.getTerceiroScore());
+        Font fonteTamanho4 = new Font("Press Start 2P", Font.PLAIN, 23);
+        lbl_melhor3.setFont(fonteTamanho4);
+        lbl_melhor3.setForeground(Color.ORANGE);
+        lbl_melhor3.setBounds(40, 100, 9999, 50);
+        backgroundPanel.add(lbl_melhor3);
 
         // Adicionar o JLabel que alterna entre as imagens
         imgLabel = new JLabel(imgIcon1);
