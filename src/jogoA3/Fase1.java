@@ -106,7 +106,12 @@ public class Fase1 extends JFrame implements ActionListener {
         timerAtaqueMolho.setRepeats(false);
 
         lbl_defesabacaxi = new JLabel();
+<<<<<<< HEAD
         lbl_defesabacaxi.setIcon(new ImageIcon(getClass().getResource("btdefender.png")));
+=======
+        lbl_defesabacaxi.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         lbl_defesabacaxi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -122,12 +127,17 @@ public class Fase1 extends JFrame implements ActionListener {
                     }else {
                     	lbl_acao.setVisible(true);
                     	lbl_acao.setText("Ah não! Sua defesa não foi forte o suficiente!");
-                    	barraHeroi.setValue(barraHeroi.getValue() - 50);
+                    	barraHeroi.setValue(barraHeroi.getValue() - 3);
                     	++pontos;
                     }
             }
          });
+<<<<<<< HEAD
         lbl_defesabacaxi.setBounds(150, 250, 100, 100);
+=======
+        
+        lbl_defesabacaxi.setBounds(150, 290, 100, 100);
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         backgroundPanel.add(lbl_defesabacaxi); 
         
         lbl_liberarVida = new JLabel();
@@ -150,7 +160,11 @@ public class Fase1 extends JFrame implements ActionListener {
         backgroundPanel.add(lbl_liberarVida);
         
         lbl_defesaOuvEMelo = new JLabel();
+<<<<<<< HEAD
         lbl_defesaOuvEMelo.setIcon(new ImageIcon(getClass().getResource("btdefender.png")));
+=======
+        lbl_defesaOuvEMelo.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         lbl_defesaOuvEMelo.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -164,17 +178,25 @@ public class Fase1 extends JFrame implements ActionListener {
                     }else {
                     	lbl_acao.setVisible(true);
                     	lbl_acao.setText("Ah não! Sua defesa não foi forte o suficiente!");
-                    	barraHeroi.setValue(barraHeroi.getValue() - 50);
+                    	barraHeroi.setValue(barraHeroi.getValue() - 10);
                     	++pontos;
                     }
             }
         });
+<<<<<<< HEAD
         lbl_defesaOuvEMelo.setBounds(150, 250, 100, 100);
+=======
+        lbl_defesaOuvEMelo.setBounds(150, 290, 100, 100);
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         lbl_defesaOuvEMelo.setVisible(false);
         backgroundPanel.add(lbl_defesaOuvEMelo); 
         
         lbl_defesaPericles = new JLabel();
+<<<<<<< HEAD
         lbl_defesaPericles.setIcon(new ImageIcon(getClass().getResource("btdefender.png")));
+=======
+        lbl_defesaPericles.setIcon(new ImageIcon(getClass().getResource("defesa.png")));
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         lbl_defesaPericles.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -190,7 +212,7 @@ public class Fase1 extends JFrame implements ActionListener {
                     }else {
                     	lbl_acao.setVisible(true);
                     	lbl_acao.setText("Ah não! Sua defesa não foi forte o suficiente!");
-                    	barraHeroi.setValue(barraHeroi.getValue() - 50);
+                    	barraHeroi.setValue(barraHeroi.getValue() - 25);
                     	++pontos;
                     }
             }
@@ -200,7 +222,13 @@ public class Fase1 extends JFrame implements ActionListener {
         backgroundPanel.add(lbl_defesaPericles); 
         
         lbl_botaoAtaqueN = new JLabel();
+<<<<<<< HEAD
         lbl_botaoAtaqueN.setIcon(new ImageIcon(getClass().getResource("btatacar.png")));
+=======
+        lbl_botaoAtaqueN.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+        
+        
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         lbl_botaoAtaqueN.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -254,7 +282,12 @@ public class Fase1 extends JFrame implements ActionListener {
         
         
         lbl_botaoAtaqueN2 = new JLabel();
+<<<<<<< HEAD
         lbl_botaoAtaqueN2.setIcon(new ImageIcon(getClass().getResource("btatacar.png")));
+=======
+        lbl_botaoAtaqueN2.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+        
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         lbl_botaoAtaqueN2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -306,7 +339,13 @@ public class Fase1 extends JFrame implements ActionListener {
         backgroundPanel.add(lbl_botaoAtaqueN2);
 
         lbl_botaoAtaqueN3 = new JLabel();
+<<<<<<< HEAD
         lbl_botaoAtaqueN3.setIcon(new ImageIcon(getClass().getResource("btatacar.png")));
+=======
+        lbl_botaoAtaqueN3.setIcon(new ImageIcon(getClass().getResource("botão.png")));
+
+        
+>>>>>>> aa955396a24358e517e2fd0cca922353e644950b
         lbl_botaoAtaqueN3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
