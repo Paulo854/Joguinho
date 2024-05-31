@@ -17,7 +17,7 @@ public class verificabanco {
     
     public String getNomePrimeiro() {
         try {
-            // Conexão com o banco de dados
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conexão = DriverManager.getConnection("jdbc:mysql://sql10.freesqldatabase.com:3306/sql10709481", "sql10709481", "rWEXPguNrN");
             String consulta = "select userName, score from pontuacao order by score desc";

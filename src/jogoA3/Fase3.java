@@ -33,13 +33,15 @@ public class Fase3 extends Fase1 implements ActionListener {
         double score = pontosFinais * 1.75;
         super.vidaRecom = 85;
 
+        
+        super.lbl_qtdeVida.setBounds(310, 160, 9999, 50);
         super.lbl_botaoAtaqueN.setVisible(false);
         super.lbl_botaoAtaqueN2.setVisible(false);
         super.lbl_botaoAtaqueN3.setVisible(true);
         super.lbl_defesabacaxi.setVisible(false);
 		super.lbl_defesaOuvEMelo.setVisible(false);
 		super.lbl_defesaPericles.setVisible(true);
-		super.lbl_liberarVida.setBounds(250, 200, 100, 100);
+		super.lbl_liberarVida.setBounds(300, 200, 100, 100);
         super.lbl_heroi.setVisible(false);
         super.lbl_heroiFase3.setVisible(true);
         super.lbl_vilao.setVisible(false);
@@ -51,6 +53,10 @@ public class Fase3 extends Fase1 implements ActionListener {
         super.barraVilao3.setVisible(true);
         super.setTitle("Batalha 3 P. R. Icles");
 
+        if(acumaVida <= 2) {
+        	lbl_qtdeVida.setText("Vida(s)"+acumaVida);
+        }
+        
         if(acumaVida + 1 <= 2) {
 	        if(pontos  % 5 == 0) {
 	        	++pontos;

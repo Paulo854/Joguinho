@@ -43,15 +43,15 @@ public class cena1 extends JFrame {
 
         backgroundPanel = new BackgroundPanel(backgroundImage);
         backgroundPanel.setLayout(null);
-        add(backgroundPanel); // Adiciona o painel de fundo ao JFrame
+        add(backgroundPanel); 
     }
 
-    // Método para iniciar a música quando a janela é exibida
+    
     @Override
     public void setVisible(boolean b) {
         super.setVisible(b);
-        if (b) { // Se a janela está sendo exibida
-            // Carrega e inicia a música
+        if (b) { 
+           
         	System.out.print("sistema iniciado");
             playBackgroundMusic("testemusica.wav");
         }
@@ -59,21 +59,21 @@ public class cena1 extends JFrame {
 
     private void playBackgroundMusic(String resourceName) {
     	try {
-            // Obtém o recurso como URL
+           
             URL resource = getClass().getResource(resourceName);
             if (resource == null) {
                 System.err.println("Arquivo de áudio não encontrado: " + resourceName);
                 return;
             }
 
-            // Abre o recurso de áudio
+           
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(resource);
             AudioFormat format = audioStream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, format);
             audioClip = (Clip) AudioSystem.getLine(info);
             audioClip.open(audioStream);
 
-            // Adiciona um ouvinte de eventos para detectar quando a música termina
+            
             audioClip.addLineListener(event -> {
                 if (event.getType() == LineEvent.Type.STOP) {
                 	Fase1 f1 = new Fase1();
@@ -83,14 +83,14 @@ public class cena1 extends JFrame {
                 }
             });
 
-            // Reproduz o áudio
+            
             audioClip.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
     }
 
-    // Método para parar a música quando a janela é fechada
+   
     @Override
     public void dispose() {
         super.dispose();

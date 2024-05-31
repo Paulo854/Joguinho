@@ -47,11 +47,11 @@ public class jogoPrincipal extends JFrame {
         ImageIcon backgroundImageIcon = new ImageIcon(getClass().getResource("telatitulo.png"));
         Image backgroundImage = backgroundImageIcon.getImage();
 
-        // Carregar as duas imagens para alternar
+        
         ImageIcon imgIcon1 = new ImageIcon(getClass().getResource("title1.png"));
         ImageIcon imgIcon2 = new ImageIcon(getClass().getResource("title2.png"));
 
-        // Criar o JPanel com a imagem de fundo
+     
         BackgroundPanel backgroundPanel = new BackgroundPanel(backgroundImage);
         backgroundPanel.setLayout(null);
 
@@ -103,12 +103,12 @@ public class jogoPrincipal extends JFrame {
         lbl_melhor3.setBounds(40, 100, 9999, 50);
         backgroundPanel.add(lbl_melhor3);
 
-        // Adicionar o JLabel que alterna entre as imagens
+       
         imgLabel = new JLabel(imgIcon1);
         imgLabel.setBounds(380, 1, imgIcon1.getIconWidth(), imgIcon1.getIconHeight());
         backgroundPanel.add(imgLabel);
 
-        // Configurar o Timer para alternar as imagens // tive que usar chat GPT
+       
         Timer timer = new Timer(500, new ActionListener() {
             private boolean toggle = true;
 

@@ -49,6 +49,10 @@ public class Fase2 extends Fase1 implements ActionListener{
 
 
 			
+			if(acumaVida <= 2) {
+	        	lbl_qtdeVida.setText("Vida(s)"+acumaVida);
+	        }
+			
 			if(acumaVida + 1 <= 2) {
 		        if(pontos  % 5 == 0) {
 		        	++pontos;
