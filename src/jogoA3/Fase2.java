@@ -20,8 +20,13 @@ public class Fase2 extends Fase1 implements ActionListener{
     		acumadoDeVida = acumaVida;
     	}        
 		super.pontos = pontos = 1;
+		if(vida<= 450){
+			super.barraHeroi.setValue(vida*2);
+		}else{
+			super.barraHeroi.setValue(vida);
+		}
 		super.acumaVida = acumaVida;
-		super.barraHeroi.setValue(vida);
+		
 	}
 		
 		
@@ -33,7 +38,7 @@ public class Fase2 extends Fase1 implements ActionListener{
 			pontosFinais = pontosFinais - 1;
 			
 			controlador.setScore2(pontosFinais);
-			super.vidaRecom = 50;
+			super.vidaRecom = 100;
 			
 			
 			super.lbl_botaoAtaqueN.setVisible(false);
