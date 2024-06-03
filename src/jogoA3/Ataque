@@ -1,0 +1,63 @@
+// SUGESTAO DE CLASSE (SEM IMPORTES)
+
+public class Ataque {
+	JLabel  lbl_acaoHeroi, lbl_acaoVilao, lbl_botaoAtaque;
+	JProgressBar BarraHeroi;
+	
+	public Ataque(JProgressBar BarraHeroi, JLabel lbl_botaoAtaque, JLabel lbl_acaoHeroi, JLabel lbl_acaoVilao) {
+		this.BarraHeroi=BarraHeroi;
+		this.lbl_acaoHeroi=lbl_acaoHeroi;
+		this.lbl_acaoVilao=lbl_acaoVilao;
+		this.lbl_botaoAtaque=lbl_botaoAtaque;
+	}
+	
+	public int atacar(Timer timerAtaqueMolho, JLabel lbl_ataqueMolho,int a,int b,int c,int d,int e, int ataqueVilao){
+	lbl_botaoAtaque.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        	lbl_acaoHeroi.setVisible(false);
+        	lbl_acaoVilao.setVisible(false);
+        	int vida;
+            int vilao;
+            int normalAtaque = 7;
+            Random r = new Random();
+            vida = r.nextInt(10);
+            vilao = r.nextInt(10);
+            if (vida <= a) {
+            	lbl_acaoHeroi.setVisible(true);
+        		lbl_acaoHeroi.setText("Errou...");
+            } else if (vida <= b) {
+            	lbl_acaoHeroi.setVisible(true);
+        		lbl_acaoHeroi.setText("Inimigo atingido!");
+                barraVilao.setValue(barraVilao.getValue() - normalAtaque);
+            }else if(vilao <= c) {
+            	lbl_acaoHeroi.setVisible(true);
+        		lbl_acaoHeroi.setText("Caramba! O inimigo defendeu!");
+
+            }else {
+            	lbl_acaoHeroi.setVisible(true);
+        		lbl_acaoHeroi.setText("O ataque acertou um ponto fraco!");
+                barraVilao.setValue(barraVilao.getValue() - normalAtaque * 2);
+            }
+            if (vilao <= d) {
+            	lbl_acaoVilao.setVisible(true);
+        		lbl_acaoVilao.setText("... que bom que ele errou");
+        		lbl_acaoVilao.setBounds(880, 10, 9999, 50);
+            } else if (vilao >= e) {
+            	lbl_acaoVilao.setVisible(true);
+        		lbl_acaoVilao.setText("Você foi atingido!");
+        		lbl_acaoVilao.setBounds(970, 10, 9999, 50);
+                barraHeroi.setValue(barraHeroi.getValue() - ataqueVilao);
+            } else {
+            	lbl_acaoVilao.setVisible(true);
+        		lbl_acaoVilao.setText("Ai! Esse ataque foi muito forte...");
+        		lbl_acaoVilao.setBounds(800, 10, 9999, 50);
+                barraHeroi.setValue(barraHeroi.getValue() - ataqueVilao * 2);
+            }
+        lbl_ataqueMolho.setVisible(true);
+            timerAtaqueMolho.restart();
+            ++pontos;
+    }
+    });
+    return pontos;
+	}}

@@ -62,9 +62,9 @@ public class jogoPrincipal extends JFrame {
         lbl_iniciar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // c1.setVisible(true);
-                Fase1 f1 = new Fase1();
-                f1.setVisible(true);
+                 c1.setVisible(true);
+                /*Fase1 f1 = new Fase1();
+                f1.setVisible(true);*/
                 dispose();
             }
         });
