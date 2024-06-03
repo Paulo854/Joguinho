@@ -19,7 +19,7 @@ public class verificabanco {
         try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5711354", "sql5711354", "lThwqYJaeq");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://);
             String consulta = "select userName, score from pontuacao order by score desc";
             PreparedStatement stmt = conexão.prepareStatement(consulta);
             ResultSet resultado = stmt.executeQuery();
@@ -44,7 +44,7 @@ public class verificabanco {
         try {
             // Conexão com o banco de dados
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5711354", "sql5711354", "lThwqYJaeq");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://);
             String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 1";
             PreparedStatement stmt = conexão.prepareStatement(consulta);
             ResultSet resultado = stmt.executeQuery();
@@ -69,7 +69,7 @@ public class verificabanco {
         try {
             // Conexão com o banco de dados
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5711354", "sql5711354", "lThwqYJaeq");
+Connection conexão = DriverManager.getConnection("jdbc:mysql://);
             String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 2";
             PreparedStatement stmt = conexão.prepareStatement(consulta);
             ResultSet resultado = stmt.executeQuery();
@@ -94,7 +94,7 @@ public class verificabanco {
         try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5711354", "sql5711354", "lThwqYJaeq");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://);
             String consulta = "select userName, score from pontuacao order by score desc";
 
             PreparedStatement stmt = conexão.prepareStatement(consulta);
@@ -119,7 +119,7 @@ public class verificabanco {
         try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5711354", "sql5711354", "lThwqYJaeq");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://);
             String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 1";
 
             PreparedStatement stmt = conexão.prepareStatement(consulta);
@@ -144,7 +144,7 @@ public class verificabanco {
         try {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5711354", "sql5711354", "lThwqYJaeq");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://);
             String consulta = "select userName, score from pontuacao order by score desc LIMIT 1 OFFSET 2";
 
             PreparedStatement stmt = conexão.prepareStatement(consulta);
@@ -168,7 +168,7 @@ public class verificabanco {
     public void setBanco(String nome, double score) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conexão = DriverManager.getConnection("jdbc:mysql://sql5.freesqldatabase.com:3306/sql5711354", "sql5711354", "lThwqYJaeq");
+            Connection conexão = DriverManager.getConnection("jdbc:mysql://);
             String inserir = "INSERT INTO pontuacao (userName, score, date) VALUES (?, ?, NOW())";
             PreparedStatement stmt = conexão.prepareStatement(inserir);
 
