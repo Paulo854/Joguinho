@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.awt.event.MouseEvent;
 
 public class cena1 extends JFrame {
     private BackgroundPanel backgroundPanel;
@@ -59,7 +60,8 @@ public class cena1 extends JFrame {
         add(backgroundPanel);
 
         /*pularCena1 = new JLabel();
-        pularCena1.setText("Pular História");*/
+        pularCena1.setText("Pular História");
+        */
 
         
         firstImageShown = true;
