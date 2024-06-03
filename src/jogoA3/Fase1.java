@@ -29,7 +29,7 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_acao;
     public JLabel lbl_liberarVida;
     public JLabel lbl_qtdeVida;
-    public int vidaRecom = 30;
+    public int vidaRecom = 70;
     public int defendeBacaxi;
     public int defendeOuvEMelo;
     public int defendepericles;
@@ -208,8 +208,8 @@ public class Fase1 extends JFrame implements ActionListener {
             	lbl_acao1.setVisible(false);
             	int vida;
                 int bacaxi;
-                int normalAtaque = 7;
-                int ataqueBacaxi = 5;
+                int normalAtaque = 75;
+                int ataqueBacaxi = 55;
                 Random r = new Random();
                 vida = r.nextInt(10);
                 bacaxi = r.nextInt(10);
@@ -260,8 +260,8 @@ public class Fase1 extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
             	int vida;
                 int coleEmelo;
-                int normalAtaque = 12;
-                int AtaqueleColeEMelo = 10;
+                int normalAtaque = 125;
+                int AtaqueleColeEMelo = 105;
                 Random r = new Random();
                 vida = r.nextInt(10);
                 coleEmelo = r.nextInt(10);
@@ -312,8 +312,8 @@ public class Fase1 extends JFrame implements ActionListener {
             public void mouseClicked(MouseEvent e) {
             	int vida;
                 int pericles;
-                int normalAtaque = 20;
-                int AtaquePericles = 50;
+                int normalAtaque = 155;
+                int AtaquePericles = 205;
                 Random r = new Random();
                 vida = r.nextInt(10);
                 pericles = r.nextInt(10);
