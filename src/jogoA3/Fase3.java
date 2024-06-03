@@ -31,7 +31,7 @@ public class Fase3 extends Fase1 implements ActionListener {
     	pontosFinais = pontosFinais - 1;
     	
         double score = pontosFinais * 1.75;
-        super.vidaRecom = 85;
+        super.vidaRecom = 150;
 
         
         super.lbl_qtdeVida.setBounds(310, 160, 9999, 50);
