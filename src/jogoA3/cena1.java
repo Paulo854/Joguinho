@@ -14,6 +14,7 @@ public class cena1 extends JFrame {
     private JLabel imageLabel;
     private Timer timer;
     private boolean firstImageShown;
+    //private JLabel pularCena;
 
     public class BackgroundPanel extends JPanel {
         private Image backgroundImage;
@@ -56,6 +57,9 @@ public class cena1 extends JFrame {
         backgroundPanel.setLayout(null);
         backgroundPanel.add(imageLabel);
         add(backgroundPanel);
+
+        /*pularCena1 = new JLabel();
+        pularCena1.setText("Pular História");*/
 
         
         firstImageShown = true;
