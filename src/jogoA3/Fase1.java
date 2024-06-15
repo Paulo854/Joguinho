@@ -16,7 +16,6 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_vilao3;
     public JLabel lbl_heroi;
     public JLabel lbl_heroiFase3;
-    public JLabel lbl_pontos;
     public JLabel lbl_ataqueMolho;
     public JLabel lbl_defesabacaxi;
     public JLabel lbl_defesaOuvEMelo;
