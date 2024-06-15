@@ -28,15 +28,6 @@ public class Fase1 extends JFrame implements ActionListener {
     public JLabel lbl_liberarVida;
     public JLabel lbl_qtdeVida;
     public int vidaRecom = 70;
-    public int defendeBacaxi;
-    public int defendeOuvEMelo;
-    public int defendepericles;
-    public int ataqueNormalVilao;
-    public int ataqueNormalHeroi;
-    public int superAtaqueVilao;
-    public int superAtaqueHeroi; 
-    public int errarAtaqueVilao;
-    public int errarAtaqueHeroi;
     public int pontos = 1;
     public Timer timer;
     public int finalPontos;
